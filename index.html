@@ -863,13 +863,14 @@ const problems = [
   },
   {
     no:85, topic:"같은 용법 짝짓기 (계속)",
-    q:"<보기>의 밑줄 친 부분과 쓰임이 같은 것끼리 짝지어진 것? <보기> The teacher has taught me since I was ten years old. (계속)",
+    q:"&lt;보기&gt;의 밑줄 친 부분과 쓰임이 같은 것끼리 짝지어진 것?",
+    box:"&lt;보기&gt; The teacher <u>has taught</u> me <u>since I was ten years old</u>. (계속)\n\n(a) This wallet is the greatest gift I <u>have ever seen</u>.\n(b) I <u>have lived</u> in Seoul for ten years.\n(c) <u>Have</u> you ever <u>been</u> to London?\n(d) My brother <u>has learned</u> Chinese since last week.\n(e) He <u>has finished</u> the assignment already.",
     type:"single",
     choices:[
       "(a)(d)","(b)(d)","(b)(d)(e)","(a)(c)(d)","(b)(e)"
     ],
     answer:1,
-    prev:"❌ 이전 답: ③ (틀림 - (e)는 완료)",
+    prev:"❌ 이전 답: ③ (틀림 - (e)는 already가 있어 완료 용법)",
     explain:`<보기>는 <b>since</b> → <span class="ans">계속</span>!
     각 문장:
     <ul>
@@ -1382,17 +1383,4 @@ problems.forEach((p, idx) => {
     }
     card.dataset.solved="0";
     card.querySelectorAll('.choice').forEach(c=>c.classList.remove('selected','correct-ans','wrong-ans'));
-    card.querySelectorAll('input.fillin').forEach(i=>{i.value=''; i.style.borderBottomColor=''; i.style.color='';});
-    card.querySelector('.feedback').className='feedback';
-    card.querySelector('.feedback').textContent='';
-    card.querySelector('.explain').style.display='none';
-  });
-
-  container.appendChild(card);
-});
-
-updateScore();
-</script>
-
-</body>
-<
+    card.querySelectorAll
