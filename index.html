@@ -1383,4 +1383,18 @@ problems.forEach((p, idx) => {
       solved = Math.max(0, solved-1);
     }
     card.dataset.solved="0";
-    card.querySelectorAll('.choice').forEach(c=>
+    card.querySelectorAll('.choice').forEach(c=>c.classList.remove('selected','correct-ans','wrong-ans'));
+    card.querySelectorAll('input.fillin').forEach(i=>{i.value=''; i.style.borderBottomColor=''; i.style.color='';});
+    card.querySelector('.feedback').className='feedback';
+    card.querySelector('.feedback').textContent='';
+    card.querySelector('.explain').style.display='none';
+  });
+
+  container.appendChild(card);
+});
+
+updateScore();
+</script>
+
+</body>
+</html>
