@@ -5,414 +5,232 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>영핏영어(EngFit) | 한태은 - 현재완료 오답노트</title>
 <style>
-:root{
-  --deep:#04305b;
-  --mid:#0a4a85;
-  --light:#1f7fc9;
-  --aqua:#62d2ff;
-  --coral:#ff8a7a;
-  --coral2:#ffb38a;
-  --pink:#ffd1d8;
-  --gold:#ffd773;
-  --white:#ffffff;
-  --glass:rgba(255,255,255,0.12);
-  --glass-strong:rgba(255,255,255,0.22);
-  --shadow:0 12px 40px rgba(0,40,90,0.35);
-}
-*{box-sizing:border-box; margin:0; padding:0;}
+:root{--deep:#04305b;--mid:#0a4a85;--light:#1f7fc9;--aqua:#62d2ff;--coral:#ff8a7a;--gold:#ffd773;--shadow:0 12px 40px rgba(0,40,90,0.35);}
+*{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;}
-body{
-  font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;
-  color:#0e2a4d;
-  min-height:100vh;
-  background:
-    radial-gradient(ellipse at 50% -10%, rgba(255,255,255,0.55), transparent 45%),
-    radial-gradient(ellipse at 20% 20%, rgba(98,210,255,0.45), transparent 50%),
-    linear-gradient(180deg, #6dc8ff 0%, #2b89cc 25%, #0c5395 60%, #042f5f 100%);
-  background-attachment: fixed;
-  overflow-x:hidden;
-}
-
-.rays{
-  position:fixed; inset:0; pointer-events:none; z-index:0;
-  background:
-    linear-gradient(110deg, transparent 38%, rgba(255,255,255,0.18) 41%, transparent 44%),
-    linear-gradient(120deg, transparent 55%, rgba(255,255,255,0.12) 58%, transparent 62%),
-    linear-gradient(95deg, transparent 18%, rgba(255,255,255,0.10) 22%, transparent 26%);
-  mix-blend-mode:screen;
-  animation: rayShift 16s ease-in-out infinite alternate;
-}
-@keyframes rayShift{ from{transform:translateX(-2%);} to{transform:translateX(2%);} }
-
-.bubbles{position:fixed; inset:0; overflow:hidden; pointer-events:none; z-index:0;}
-.bubble{
-  position:absolute; bottom:-80px; border-radius:50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.25) 60%, rgba(255,255,255,0.05));
-  box-shadow: inset -1px -1px 4px rgba(0,0,0,0.05), 0 2px 6px rgba(255,255,255,0.25);
-  opacity:0.85;
-  animation: rise linear infinite;
-}
-@keyframes rise{
-  0%   {transform: translateY(0) translateX(0);}
-  50%  {transform: translateY(-55vh) translateX(15px);}
-  100% {transform: translateY(-110vh) translateX(-10px); opacity:0;}
-}
-
-.seabed{
-  position:fixed; bottom:0; left:0; right:0; height:160px; z-index:0; pointer-events:none;
-  background: linear-gradient(180deg, transparent 0%, rgba(2,28,60,0.0) 10%, rgba(2,28,60,0.55) 100%);
-}
-.seabed svg{position:absolute; bottom:0; width:100%; height:100%;}
-
-.fish{position:fixed; z-index:0; pointer-events:none; opacity:0.85;}
-.fish.f1{top:18%; left:-80px; animation: swim1 28s linear infinite;}
-.fish.f2{top:55%; left:-80px; animation: swim1 36s linear infinite; animation-delay:-10s; transform:scale(0.7);}
-.fish.f3{top:72%; left:-80px; animation: swim1 42s linear infinite; animation-delay:-20s; transform:scale(0.5);}
-@keyframes swim1{ from{transform:translateX(0);} to{transform:translateX(110vw);} }
-
-.wrap{
-  position:relative; z-index:2;
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 32px 18px 120px;
-}
-header.hero{
-  text-align:center; color:#fff;
-  padding: 28px 22px 22px;
-  border-radius: 28px;
-  background: linear-gradient(140deg, rgba(255,255,255,0.18), rgba(255,255,255,0.05));
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border:1px solid rgba(255,255,255,0.35);
-  box-shadow: var(--shadow);
-  position:relative; overflow:hidden;
-}
-header.hero::after{
-  content:""; position:absolute; inset:0;
-  background: radial-gradient(circle at 80% 0%, rgba(255,215,115,0.35), transparent 50%);
-  pointer-events:none;
-}
-header.hero h1{
-  font-size: clamp(22px, 4.6vw, 34px);
-  font-weight:800; letter-spacing:-0.5px;
-  text-shadow: 0 2px 14px rgba(0,30,80,0.5);
-}
-header.hero p.sub{ margin-top:8px; font-size:14px; opacity:0.95;}
-.tag-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:14px;}
-.tag{
-  display:inline-flex; align-items:center; gap:6px;
-  padding:6px 12px; border-radius:999px;
-  background: rgba(255,255,255,0.22);
-  border:1px solid rgba(255,255,255,0.4);
-  font-size:12px; color:#fff; font-weight:600;
-}
-.tag .dot{width:8px;height:8px;border-radius:50%; background:var(--gold); box-shadow:0 0 8px var(--gold);}
-
-.scoreboard{ display:flex; gap:10px; justify-content:center; margin: 16px auto 0; flex-wrap:wrap;}
-.score-pill{
-  background: rgba(255,255,255,0.95);
-  color: var(--deep);
-  border-radius: 16px;
-  padding: 10px 16px;
-  min-width: 110px;
-  text-align:center;
-  box-shadow: 0 6px 18px rgba(0,40,90,0.25);
-  border:1px solid rgba(255,255,255,0.6);
-}
-.score-pill .lbl{font-size:11px; color:#5b7a9c; font-weight:700; letter-spacing:0.5px;}
-.score-pill .val{font-size:22px; font-weight:800; color:var(--deep);}
-
-.card{
-  position:relative;
-  margin-top: 22px;
-  padding: 22px 22px 18px;
-  border-radius: 22px;
-  background: linear-gradient(160deg, rgba(255,255,255,0.96), rgba(240,250,255,0.92));
-  box-shadow: var(--shadow);
-  border:1px solid rgba(255,255,255,0.6);
-  overflow:hidden;
-}
-.card::before{
-  content:""; position:absolute; top:-20px; right:-20px; width:140px; height:140px;
-  background: radial-gradient(circle, rgba(98,210,255,0.35), transparent 60%);
-  border-radius:50%; pointer-events:none;
-}
-.qhead{ display:flex; align-items:flex-start; gap:12px; margin-bottom:12px;}
-.qno{
-  flex-shrink:0;
-  width: 46px; height:46px; border-radius:14px;
-  background: linear-gradient(135deg, var(--light), var(--mid));
-  color:#fff; font-weight:800; font-size:18px;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow: 0 6px 14px rgba(15,80,150,0.4);
-}
+body{font-family:'Noto Sans KR','Apple SD Gothic Neo',sans-serif;color:#0e2a4d;min-height:100vh;
+  background:radial-gradient(ellipse at 50% -10%,rgba(255,255,255,0.55),transparent 45%),
+    radial-gradient(ellipse at 20% 20%,rgba(98,210,255,0.45),transparent 50%),
+    linear-gradient(180deg,#6dc8ff 0%,#2b89cc 25%,#0c5395 60%,#042f5f 100%);
+  background-attachment:fixed;overflow-x:hidden;}
+.rays{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,0.18) 41%,transparent 44%),
+    linear-gradient(120deg,transparent 55%,rgba(255,255,255,0.12) 58%,transparent 62%);
+  mix-blend-mode:screen;animation:rayShift 16s ease-in-out infinite alternate;}
+@keyframes rayShift{from{transform:translateX(-2%);}to{transform:translateX(2%);}}
+.bubbles{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+.bubble{position:absolute;bottom:-80px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.95),rgba(255,255,255,0.25) 60%,rgba(255,255,255,0.05));
+  opacity:0.85;animation:rise linear infinite;}
+@keyframes rise{0%{transform:translateY(0);}100%{transform:translateY(-110vh);opacity:0;}}
+.seabed{position:fixed;bottom:0;left:0;right:0;height:160px;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 0%,rgba(2,28,60,0.55) 100%);}
+.seabed svg{position:absolute;bottom:0;width:100%;height:100%;}
+.fish{position:fixed;z-index:0;pointer-events:none;opacity:0.85;}
+.fish.f1{top:18%;left:-80px;animation:swim 28s linear infinite;}
+.fish.f2{top:55%;left:-80px;animation:swim 36s linear infinite;animation-delay:-10s;transform:scale(0.7);}
+.fish.f3{top:72%;left:-80px;animation:swim 42s linear infinite;animation-delay:-20s;transform:scale(0.5);}
+@keyframes swim{from{transform:translateX(0);}to{transform:translateX(110vw);}}
+.wrap{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:32px 18px 120px;}
+header.hero{text-align:center;color:#fff;padding:28px 22px 22px;border-radius:28px;
+  background:linear-gradient(140deg,rgba(255,255,255,0.18),rgba(255,255,255,0.05));
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.35);box-shadow:var(--shadow);position:relative;overflow:hidden;}
+header.hero::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 80% 0%,rgba(255,215,115,0.35),transparent 50%);pointer-events:none;}
+header.hero h1{font-size:clamp(22px,4.6vw,34px);font-weight:800;letter-spacing:-0.5px;
+  text-shadow:0 2px 14px rgba(0,30,80,0.5);}
+header.hero p.sub{margin-top:8px;font-size:14px;opacity:0.95;}
+.tag-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px;}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;
+  background:rgba(255,255,255,0.22);border:1px solid rgba(255,255,255,0.4);
+  font-size:12px;color:#fff;font-weight:600;}
+.tag .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);}
+.scoreboard{display:flex;gap:10px;justify-content:center;margin:16px auto 0;flex-wrap:wrap;}
+.score-pill{background:rgba(255,255,255,0.95);color:var(--deep);border-radius:16px;
+  padding:10px 16px;min-width:110px;text-align:center;
+  box-shadow:0 6px 18px rgba(0,40,90,0.25);border:1px solid rgba(255,255,255,0.6);}
+.score-pill .lbl{font-size:11px;color:#5b7a9c;font-weight:700;letter-spacing:0.5px;}
+.score-pill .val{font-size:22px;font-weight:800;color:var(--deep);}
+.card{position:relative;margin-top:22px;padding:22px 22px 18px;border-radius:22px;
+  background:linear-gradient(160deg,rgba(255,255,255,0.96),rgba(240,250,255,0.92));
+  box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.6);overflow:hidden;}
+.card::before{content:"";position:absolute;top:-20px;right:-20px;width:140px;height:140px;
+  background:radial-gradient(circle,rgba(98,210,255,0.35),transparent 60%);
+  border-radius:50%;pointer-events:none;}
+.qhead{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;}
+.qno{flex-shrink:0;width:46px;height:46px;border-radius:14px;
+  background:linear-gradient(135deg,var(--light),var(--mid));
+  color:#fff;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 14px rgba(15,80,150,0.4);}
 .qmeta{flex:1;}
-.qtopic{
-  display:inline-block; font-size:11px; font-weight:700; padding:3px 9px;
-  border-radius:999px; background:#e7f3ff; color:#185a9c; margin-bottom:6px;
-}
-.qtitle{ font-size:15px; font-weight:600; color:#0e2a4d; line-height:1.55;}
-
-.box{
-  background: #f3f9ff;
-  border: 1px dashed #b3d4f1;
-  border-radius: 12px;
-  padding: 12px 14px;
-  margin: 10px 0;
-  font-family: 'Georgia', serif; color:#10325c;
-  white-space: pre-wrap;
-}
-.choices{display:flex; flex-direction:column; gap:8px; margin-top:10px;}
-.choice{
-  display:flex; gap:10px; align-items:flex-start;
-  padding:11px 14px; border-radius:12px;
-  background:#f6fbff; border:1.5px solid #d6e8f7;
-  cursor:pointer; transition: all .18s ease;
-  font-size:14px; line-height:1.5;
-}
-.choice:hover{ background:#eaf4ff; border-color:#86bfee; transform: translateY(-1px);}
-.choice .num{
-  width:24px; height:24px; border-radius:50%; flex-shrink:0;
-  background:#e0eef9; color:#185a9c; font-weight:700;
-  display:flex; align-items:center; justify-content:center; font-size:12px;
-}
-.choice.selected{ background:#fff8e1; border-color:#ffd773; }
-.choice.selected .num{ background:#ffd773; color:#7a4a00;}
-.choice.correct-ans{ background:#e8fbef !important; border-color:#5dc382 !important;}
-.choice.correct-ans .num{ background:#5dc382; color:#fff;}
-.choice.wrong-ans{ background:#ffeaea !important; border-color:#e57272 !important;}
-.choice.wrong-ans .num{ background:#e57272; color:#fff;}
-
-.subq{
-  margin: 8px 0;
-  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
-  font-size:14px; color:#1a3960;
-}
-input.fillin{
-  border:none; border-bottom:2px solid #6aa8da; background:transparent;
-  padding:4px 8px; font-size:15px; min-width:120px; color:#0e2a4d;
-  font-family:inherit; font-weight:600;
-}
-input.fillin:focus{outline:none; border-bottom-color:var(--coral);}
-
-.actions{ display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;}
-.btn{
-  border:none; border-radius:12px; padding:10px 16px;
-  font-weight:700; font-size:14px; cursor:pointer; transition:.18s; font-family:inherit;
-}
-.btn-check{
-  background: linear-gradient(135deg, #1f7fc9, #0a4a85); color:#fff;
-  box-shadow: 0 6px 14px rgba(15,80,150,0.35);
-}
-.btn-check:hover{ transform: translateY(-2px); box-shadow: 0 10px 18px rgba(15,80,150,0.45);}
-.btn-reset{ background:#eef4fb; color:#1a3960;}
-.btn-reset:hover{ background:#dceaf7;}
-
-.prev-answer{
-  margin-top:10px; padding:10px 12px; border-radius:10px;
-  background: linear-gradient(135deg, #ffe7e2, #ffd1c8);
-  border:1px solid #ff9b85; color:#8a2b10; font-size:13px;
-}
-.prev-answer b{color:#b03000;}
-
-.feedback{
-  margin-top:14px; padding:14px 16px; border-radius:14px;
-  display:none; font-size:14px; line-height:1.6;
-  border-left: 4px solid;
-}
-.feedback.show{display:block; animation: pop .3s ease;}
-@keyframes pop{from{transform:scale(0.96); opacity:0;} to{transform:scale(1); opacity:1;}}
-.feedback.ok{background:#e9fbf0; border-color:#3fbf6c; color:#1c6b3c;}
-.feedback.no{background:#ffefef; border-color:#e05858; color:#962020;}
-
-.explain{
-  margin-top: 12px;
-  padding: 14px 16px;
-  background: linear-gradient(135deg, #fff9e6, #fff3d0);
-  border: 1px solid #ffe28a;
-  border-radius: 14px;
-  font-size:14px; line-height:1.7; color:#5a3d00;
-  position:relative;
-}
-.explain::before{
-  content:"💡 자세한 설명";
-  display:block; font-weight:800; color:#a07000; margin-bottom:6px; font-size:13px;
-}
+.qtopic{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;
+  border-radius:999px;background:#e7f3ff;color:#185a9c;margin-bottom:6px;}
+.qtitle{font-size:15px;font-weight:600;color:#0e2a4d;line-height:1.55;}
+.box{background:#f3f9ff;border:1px dashed #b3d4f1;border-radius:12px;
+  padding:12px 14px;margin:10px 0;font-family:'Georgia',serif;color:#10325c;white-space:pre-wrap;}
+.box u{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;color:#b03000;}
+.choices{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.choice{display:flex;gap:10px;align-items:flex-start;padding:11px 14px;border-radius:12px;
+  background:#f6fbff;border:1.5px solid #d6e8f7;cursor:pointer;transition:all .18s ease;
+  font-size:14px;line-height:1.5;}
+.choice:hover{background:#eaf4ff;border-color:#86bfee;transform:translateY(-1px);}
+.choice u{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;color:#b03000;}
+.choice .num{width:24px;height:24px;border-radius:50%;flex-shrink:0;
+  background:#e0eef9;color:#185a9c;font-weight:700;
+  display:flex;align-items:center;justify-content:center;font-size:12px;}
+.choice.selected{background:#fff8e1;border-color:#ffd773;}
+.choice.selected .num{background:#ffd773;color:#7a4a00;}
+.choice.correct-ans{background:#e8fbef !important;border-color:#5dc382 !important;}
+.choice.correct-ans .num{background:#5dc382;color:#fff;}
+.choice.wrong-ans{background:#ffeaea !important;border-color:#e57272 !important;}
+.choice.wrong-ans .num{background:#e57272;color:#fff;}
+.subq{margin:8px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px;color:#1a3960;}
+.subq u{text-decoration:underline;text-decoration-thickness:2px;color:#b03000;}
+input.fillin{border:none;border-bottom:2px solid #6aa8da;background:transparent;
+  padding:4px 8px;font-size:15px;min-width:120px;color:#0e2a4d;font-family:inherit;font-weight:600;}
+input.fillin:focus{outline:none;border-bottom-color:var(--coral);}
+.actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+.btn{border:none;border-radius:12px;padding:10px 16px;font-weight:700;font-size:14px;
+  cursor:pointer;transition:.18s;font-family:inherit;}
+.btn-check{background:linear-gradient(135deg,#1f7fc9,#0a4a85);color:#fff;
+  box-shadow:0 6px 14px rgba(15,80,150,0.35);}
+.btn-check:hover{transform:translateY(-2px);box-shadow:0 10px 18px rgba(15,80,150,0.45);}
+.btn-reset{background:#eef4fb;color:#1a3960;}
+.btn-reset:hover{background:#dceaf7;}
+.feedback{margin-top:14px;padding:14px 16px;border-radius:14px;display:none;font-size:14px;
+  line-height:1.6;border-left:4px solid;}
+.feedback.show{display:block;animation:pop .3s ease;}
+@keyframes pop{from{transform:scale(0.96);opacity:0;}to{transform:scale(1);opacity:1;}}
+.feedback.ok{background:#e9fbf0;border-color:#3fbf6c;color:#1c6b3c;}
+.feedback.no{background:#ffefef;border-color:#e05858;color:#962020;}
+.explain{margin-top:12px;padding:14px 16px;
+  background:linear-gradient(135deg,#fff9e6,#fff3d0);border:1px solid #ffe28a;
+  border-radius:14px;font-size:14px;line-height:1.7;color:#5a3d00;position:relative;}
+.explain::before{content:"💡 자세한 설명";display:block;font-weight:800;color:#a07000;
+  margin-bottom:6px;font-size:13px;}
 .explain b{color:#b04300;}
-.explain .ans{
-  display:inline-block; padding:2px 8px; border-radius:6px;
-  background:#ffd773; color:#5a3d00; font-weight:700;
-}
-.explain ul{margin: 6px 0 0 18px;}
-.explain li{margin: 3px 0;}
-
-.footer{
-  text-align:center; color:#fff; opacity:0.85;
-  margin-top: 36px; font-size:13px;
-  text-shadow: 0 2px 6px rgba(0,30,80,0.4);
-}
-.celebrate{
-  margin: 16px 0; padding: 18px;
-  text-align:center; border-radius: 18px;
-  background: linear-gradient(135deg, #ffd773, #ff8a7a);
-  color:#fff; font-weight:800; font-size:16px;
-  box-shadow: var(--shadow);
-  display:none;
-}
+.explain u{text-decoration:underline;text-decoration-thickness:2px;color:#b04300;}
+.explain .ans{display:inline-block;padding:2px 8px;border-radius:6px;
+  background:#ffd773;color:#5a3d00;font-weight:700;}
+.explain ul{margin:6px 0 0 18px;}
+.explain li{margin:3px 0;}
+.footer{text-align:center;color:#fff;opacity:0.85;margin-top:36px;font-size:13px;
+  text-shadow:0 2px 6px rgba(0,30,80,0.4);}
+.celebrate{margin:16px 0;padding:18px;text-align:center;border-radius:18px;
+  background:linear-gradient(135deg,#ffd773,#ff8a7a);color:#fff;font-weight:800;font-size:16px;
+  box-shadow:var(--shadow);display:none;}
 .celebrate.show{display:block;}
-
-.progress-bar{
-  height: 8px; border-radius: 999px;
-  background: rgba(255,255,255,0.3);
-  overflow:hidden; margin-top:14px;
-}
-.progress-bar > span{
-  display:block; height:100%;
-  background: linear-gradient(90deg, var(--gold), var(--coral));
-  width:0%; transition: width .4s ease;
-  box-shadow: 0 0 8px rgba(255,215,115,0.6);
-}
-
-@media (max-width:560px){
-  .qno{width:40px; height:40px; font-size:16px;}
-  .qtitle{font-size:14px;}
-}
+.progress-bar{height:8px;border-radius:999px;background:rgba(255,255,255,0.3);
+  overflow:hidden;margin-top:14px;}
+.progress-bar>span{display:block;height:100%;
+  background:linear-gradient(90deg,var(--gold),var(--coral));
+  width:0%;transition:width .4s ease;box-shadow:0 0 8px rgba(255,215,115,0.6);}
+@media (max-width:560px){.qno{width:40px;height:40px;font-size:16px;}.qtitle{font-size:14px;}}
 </style>
 </head>
 <body>
-
 <div class="rays"></div>
 <div class="bubbles" id="bubbles"></div>
-
 <svg class="fish f1" width="60" height="36" viewBox="0 0 60 36">
-  <ellipse cx="22" cy="18" rx="18" ry="11" fill="#ffb38a"/>
-  <polygon points="40,18 58,8 58,28" fill="#ff8a7a"/>
-  <circle cx="14" cy="15" r="2" fill="#fff"/><circle cx="14" cy="15" r="1" fill="#222"/>
-  <path d="M22 18 q5 -7 12 -3" stroke="#ff7050" stroke-width="1" fill="none"/>
+<ellipse cx="22" cy="18" rx="18" ry="11" fill="#ffb38a"/>
+<polygon points="40,18 58,8 58,28" fill="#ff8a7a"/>
+<circle cx="14" cy="15" r="2" fill="#fff"/><circle cx="14" cy="15" r="1" fill="#222"/>
 </svg>
 <svg class="fish f2" width="60" height="36" viewBox="0 0 60 36">
-  <ellipse cx="22" cy="18" rx="18" ry="11" fill="#ffd773"/>
-  <polygon points="40,18 58,8 58,28" fill="#ffaa30"/>
-  <circle cx="14" cy="15" r="2" fill="#fff"/><circle cx="14" cy="15" r="1" fill="#222"/>
+<ellipse cx="22" cy="18" rx="18" ry="11" fill="#ffd773"/>
+<polygon points="40,18 58,8 58,28" fill="#ffaa30"/>
+<circle cx="14" cy="15" r="2" fill="#fff"/><circle cx="14" cy="15" r="1" fill="#222"/>
 </svg>
 <svg class="fish f3" width="60" height="36" viewBox="0 0 60 36">
-  <ellipse cx="22" cy="18" rx="18" ry="11" fill="#a3e1ff"/>
-  <polygon points="40,18 58,8 58,28" fill="#62d2ff"/>
-  <circle cx="14" cy="15" r="2" fill="#fff"/><circle cx="14" cy="15" r="1" fill="#222"/>
+<ellipse cx="22" cy="18" rx="18" ry="11" fill="#a3e1ff"/>
+<polygon points="40,18 58,8 58,28" fill="#62d2ff"/>
+<circle cx="14" cy="15" r="2" fill="#fff"/><circle cx="14" cy="15" r="1" fill="#222"/>
 </svg>
-
 <div class="seabed">
 <svg viewBox="0 0 1000 160" preserveAspectRatio="none">
-  <path d="M0 90 Q 250 70 500 95 T 1000 90 L 1000 160 L 0 160 Z" fill="#1a4a7a" opacity="0.85"/>
-  <g transform="translate(60,60)">
-    <path d="M0 100 Q -10 60 10 40 Q 0 25 20 10 Q 35 30 30 60 Q 40 80 30 100 Z" fill="#ff8a7a"/>
-    <circle cx="22" cy="20" r="6" fill="#ffb38a"/>
-    <circle cx="35" cy="35" r="4" fill="#ffd1d8"/>
-  </g>
-  <g transform="translate(820,55)">
-    <path d="M0 100 Q -15 70 5 50 Q 0 30 25 20 Q 40 40 35 70 Q 45 90 30 100 Z" fill="#ffb38a"/>
-    <circle cx="20" cy="35" r="5" fill="#ff8a7a"/>
-  </g>
-  <g stroke="#2a8a55" stroke-width="3" fill="none">
-    <path d="M250 160 Q 245 130 252 100 Q 260 70 250 50"/>
-    <path d="M260 160 Q 268 135 260 105 Q 252 75 262 55"/>
-    <path d="M700 160 Q 705 130 698 100 Q 690 70 700 50"/>
-  </g>
-  <g transform="translate(450,70)">
-    <circle cx="0" cy="80" r="14" fill="#ffd1d8"/>
-    <circle cx="20" cy="75" r="10" fill="#ff9eaf"/>
-    <circle cx="-15" cy="78" r="8" fill="#ffd1d8"/>
-    <circle cx="8" cy="60" r="9" fill="#ff9eaf"/>
-  </g>
+<path d="M0 90 Q 250 70 500 95 T 1000 90 L 1000 160 L 0 160 Z" fill="#1a4a7a" opacity="0.85"/>
+<g transform="translate(60,60)"><path d="M0 100 Q -10 60 10 40 Q 0 25 20 10 Q 35 30 30 60 Q 40 80 30 100 Z" fill="#ff8a7a"/><circle cx="22" cy="20" r="6" fill="#ffb38a"/></g>
+<g transform="translate(820,55)"><path d="M0 100 Q -15 70 5 50 Q 0 30 25 20 Q 40 40 35 70 Q 45 90 30 100 Z" fill="#ffb38a"/></g>
+<g stroke="#2a8a55" stroke-width="3" fill="none">
+<path d="M250 160 Q 245 130 252 100 Q 260 70 250 50"/>
+<path d="M260 160 Q 268 135 260 105 Q 252 75 262 55"/>
+<path d="M700 160 Q 705 130 698 100 Q 690 70 700 50"/>
+</g>
+<g transform="translate(450,70)">
+<circle cx="0" cy="80" r="14" fill="#ffd1d8"/><circle cx="20" cy="75" r="10" fill="#ff9eaf"/>
+<circle cx="-15" cy="78" r="8" fill="#ffd1d8"/><circle cx="8" cy="60" r="9" fill="#ff9eaf"/>
+</g>
 </svg>
 </div>
 
 <div class="wrap">
-
 <header class="hero">
-  <div class="tag-row">
-    <span class="tag"><span class="dot"></span>영핏영어 · EngFit</span>
-    <span class="tag">현재완료 (Present Perfect)</span>
-    <span class="tag">한태은 학생 오답 노트</span>
-    <span class="tag">2026.05.02</span>
-  </div>
-  <h1>🌊 깊은 바다 속에서 다시 풀어보는 오답노트</h1>
-  <p class="sub">✓ 표시되거나 짝대기 그어진 <b>틀린 문제</b>들만 모았어요. 한 번 더 풀고 자세한 설명으로 마스터해요!</p>
-
-  <div class="scoreboard">
-    <div class="score-pill"><div class="lbl">총 문제</div><div class="val" id="totalQ">0</div></div>
-    <div class="score-pill"><div class="lbl">푼 문제</div><div class="val" id="solvedQ">0</div></div>
-    <div class="score-pill"><div class="lbl">맞춘 문제</div><div class="val" id="correctQ">0</div></div>
-    <div class="score-pill"><div class="lbl">정답률</div><div class="val" id="rateQ">0%</div></div>
-  </div>
-  <div class="progress-bar"><span id="progBar"></span></div>
+<div class="tag-row">
+<span class="tag"><span class="dot"></span>영핏영어 · EngFit</span>
+<span class="tag">현재완료 (Present Perfect)</span>
+<span class="tag">한태은 학생 오답 노트</span>
+<span class="tag">2026.05.02</span>
+</div>
+<h1>🌊 다시 풀어보는 오답노트 (40문항)</h1>
+<p class="sub">한 번 더 풀고, 정답이든 오답이든 <b>자세한 설명</b>으로 마스터해요!</p>
+<div class="scoreboard">
+<div class="score-pill"><div class="lbl">총 문제</div><div class="val" id="totalQ">0</div></div>
+<div class="score-pill"><div class="lbl">푼 문제</div><div class="val" id="solvedQ">0</div></div>
+<div class="score-pill"><div class="lbl">맞춘 문제</div><div class="val" id="correctQ">0</div></div>
+<div class="score-pill"><div class="lbl">정답률</div><div class="val" id="rateQ">0%</div></div>
+</div>
+<div class="progress-bar"><span id="progBar"></span></div>
 </header>
 
 <div id="celebrate" class="celebrate">🎉 모든 문제를 다 풀었어요! 정말 잘했어요, 태은아! 🐠</div>
-
 <div id="container"></div>
 
 <div class="footer">
-  현재완료 = have/has + 과거분사(p.p.) — 4가지 용법: <b>경험</b> · <b>계속</b> · <b>완료</b> · <b>결과</b><br/>
-  © <b>영핏영어 (EngFit)</b> · 한태은 학생 오답 복습 페이지
+현재완료 = have/has + 과거분사(p.p.) — 4가지 용법: <b>경험</b> · <b>계속</b> · <b>완료</b> · <b>결과</b><br/>
+© <b>영핏영어 (EngFit)</b> · 한태은 학생 오답 복습 페이지
 </div>
-
 </div>
 
 <script>
 (function(){
   const wrap = document.getElementById('bubbles');
-  for(let i=0; i<22; i++){
+  for(let i=0;i<22;i++){
     const b = document.createElement('div');
-    b.className = 'bubble';
-    const size = 6 + Math.random()*22;
-    b.style.width = size+'px'; b.style.height = size+'px';
-    b.style.left = (Math.random()*100)+'%';
-    b.style.animationDuration = (10 + Math.random()*16)+'s';
-    b.style.animationDelay = (-Math.random()*15)+'s';
-    b.style.opacity = (0.4 + Math.random()*0.5);
+    b.className='bubble';
+    const size = 6+Math.random()*22;
+    b.style.width=size+'px';b.style.height=size+'px';
+    b.style.left=(Math.random()*100)+'%';
+    b.style.animationDuration=(10+Math.random()*16)+'s';
+    b.style.animationDelay=(-Math.random()*15)+'s';
+    b.style.opacity=(0.4+Math.random()*0.5);
     wrap.appendChild(b);
   }
 })();
 
 const problems = [
   {
-    no:7, topic:"since vs for",
-    q:"다음 밑줄 친 부분에서 틀린 것을 바르게 고쳐 쓰시오.",
-    box:"She <u>has known him for 2001</u>.",
-    type:"input",
-    answer:"since",
-    placeholder:"고칠 단어 한 단어",
-    prev:"❌ 이전: for를 그대로 둠 (틀림)",
-    explain:`<b>핵심 규칙:</b> 시점은 <span class="ans">since</span>, 기간은 <span class="ans">for</span>!
-    <ul>
-      <li><b>since</b> + 시점 (2001, last year, March, I was 5...)</li>
-      <li><b>for</b> + 기간 (two hours, three years...)</li>
-    </ul>
-    "2001"은 특정 연도(시점)이므로 <b>since 2001</b> → "She has known him <b>since</b> 2001."`
-  },
-  {
-    no:11, topic:"같은 용법 모두 고르기",
-    q:"다음 중 같은 용법으로 쓰인 문장을 모두 고르시오.",
-    type:"multi",
+    no:13, topic:"같은 용법 찾기",
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:"&lt;보기&gt; People <u>have enjoyed</u> the story <u>since then</u>.",
+    type:"single",
     choices:[
-      "It has been such a long time since we met.",
-      "I have never been to New York.",
-      "He has lost his cellphone at the airport.",
-      "I've known him since I was 5 years old.",
-      "My brother has just finished his homework."
+      "I <u>have learned</u> English <u>for ten years</u>.",
+      "Somin <u>has gone</u> to Paris.",
+      "<u>Have</u> you <u>ever read</u> that book?",
+      "He <u>has failed</u> the test <u>three times</u>.",
+      "The train <u>has just arrived</u> the station."
     ],
-    answer:[0,3],
-    prev:"❌ 이전 답: ②, ⑤ (틀림)",
-    explain:`두 개를 모두 고르는 문제예요.
+    answer:0,
+    explain:`&lt;보기&gt;의 <b>since then</b>은 <span class="ans">계속</span> 용법!
     <ul>
-      <li>① It has been ... <b>since we met</b> → <span class="ans">계속</span></li>
-      <li>② never been → <span class="ans">경험</span></li>
-      <li>③ has lost (지금도 없음) → <span class="ans">결과</span></li>
-      <li>④ I've known him <b>since I was 5</b> → <span class="ans">계속</span></li>
-      <li>⑤ has <b>just</b> finished → <span class="ans">완료</span></li>
+      <li>① <b>for ten years</b> → 계속 ✓</li>
+      <li>② has gone to → 결과</li>
+      <li>③ ever read → 경험</li>
+      <li>④ three times → 경험</li>
+      <li>⑤ just arrived → 완료</li>
     </ul>
-    같은 용법(<b>계속</b>)인 ①과 ④가 정답!`
+    💡 since/for + 시점/기간 → 계속!`
   },
   {
     no:17, topic:"용법 쓰기",
@@ -422,46 +240,43 @@ const problems = [
       {label:"1) Have you talked to him yet? — 용법:", answer:"완료"},
       {label:"2) Have you ever made a cake? — 용법:", answer:"경험"}
     ],
-    prev:"❌ 이전 답: 1)현재 새로운 이슈, 2)경험 (1번 틀림)",
-    explain:`단서 단어를 보세요!
-    <ul>
-      <li>1) <b>yet</b> = 아직 / 이미 → <span class="ans">완료</span> (의문문에서 yet은 "벌써, 이미")</li>
-      <li>2) <b>ever</b> = ~한 적 있니? → <span class="ans">경험</span></li>
+    explain:`<ul>
+      <li>1) <b>yet</b>(이미/아직) → <span class="ans">완료</span></li>
+      <li>2) <b>ever</b>(~한 적 있니?) → <span class="ans">경험</span></li>
     </ul>
     💡 yet, just, already → 완료 / ever, never, before, ~ times → 경험`
   },
   {
     no:18, topic:"같은 용법 찾기",
-    q:'다음 중 밑줄 친 부분의 쓰임이 <보기>와 같은 것은? <보기> I haven\'t made the cake <u>yet</u>.',
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:"&lt;보기&gt; I <u>haven't made</u> the cake <u>yet</u>.",
     type:"single",
     choices:[
-      "We have cleaned our room for 2 hours.",
-      "I haven't been to France.",
-      "I have just arrived at the airport.",
-      "I have lost my new cellphone.",
-      "She has played the piano since 2005."
+      "We <u>have cleaned</u> our room <u>for 2 hours</u>.",
+      "I <u>haven't been</u> to France.",
+      "I <u>have just arrived</u> at the airport.",
+      "I <u>have lost</u> my new cellphone.",
+      "She <u>has played</u> the piano <u>since 2005</u>."
     ],
     answer:2,
-    prev:"❌ 이전 답: ② (틀림)",
-    explain:`<보기>의 <b>yet</b>은 <span class="ans">완료</span>!
+    explain:`&lt;보기&gt;의 <b>yet</b>은 <span class="ans">완료</span>!
     <ul>
-      <li>① for 2 hours → <b>계속</b></li>
-      <li>② haven't been to France → <b>경험</b></li>
-      <li>③ <b>just arrived</b> → <b>완료</b> ✓</li>
-      <li>④ have lost → <b>결과</b></li>
-      <li>⑤ since 2005 → <b>계속</b></li>
+      <li>① for 2 hours → 계속</li>
+      <li>② haven't been → 경험</li>
+      <li>③ <b>just arrived</b> → 완료 ✓</li>
+      <li>④ have lost → 결과</li>
+      <li>⑤ since 2005 → 계속</li>
     </ul>`
   },
   {
     no:19, topic:"yet/just/already",
-    q:"빈칸에 알맞은 것을 골라 쓰시오. (yet / just / already)",
+    q:"( )안의 우리말에 맞도록 상자에서 알맞은 것을 골라 쓰시오. (yet / just / already)",
     type:"multi-fill",
     fields:[
       {label:"(1) I have ____ left there. (나는 이미 거기를 떠났다.)", answer:"already"},
       {label:"(2) He hasn't come to school ____. (그는 아직 학교에 오지 않았다.)", answer:"yet"},
       {label:"(3) His present has ____ arrived at home. (그의 선물이 막 집에 도착했다.)", answer:"just"}
     ],
-    prev:"❌ 이전 답: (1) yet → 위치 잘못 (틀림)",
     explain:`<ul>
       <li><b>already</b> = "이미" (긍정문, have와 p.p. 사이)</li>
       <li><b>yet</b> = "아직 (~안 했다)" (부정문 끝)</li>
@@ -470,82 +285,140 @@ const problems = [
     (1) <span class="ans">already</span>, (2) <span class="ans">yet</span>, (3) <span class="ans">just</span>`
   },
   {
-    no:20, topic:"같은 용법 찾기",
-    q:'다음 중 밑줄 친 부분의 쓰임이 <보기>와 같은 것은? <보기> He has read this book before. (경험)',
+    no:20, topic:"같은 용법 찾기 (경험)",
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:"&lt;보기&gt; He <u>has read</u> this book <u>before</u>.",
     type:"single",
     choices:[
-      "They have just married.",
-      "It has been raining for five days.",
-      "My mother has been beautiful since she was born.",
-      "I have never solved a problem like this.",
-      "He has gone out for a walk."
+      "They <u>have just married</u>.",
+      "It <u>has been raining</u> <u>for five days</u>.",
+      "My mother <u>has been</u> beautiful <u>since she was born</u>.",
+      "I <u>have never solved</u> a problem like this.",
+      "He <u>has gone out</u> for a walk."
     ],
     answer:3,
-    prev:"❌ 이전 답: ⑤ (틀림)",
-    explain:`<보기>의 <b>before</b>는 <span class="ans">경험</span>!
+    explain:`&lt;보기&gt;의 <b>before</b> → <span class="ans">경험</span>!
     <ul>
-      <li>① just married → <b>완료</b></li>
-      <li>② for five days → <b>계속</b></li>
-      <li>③ since she was born → <b>계속</b></li>
-      <li>④ <b>never solved</b> → <b>경험</b> ✓</li>
-      <li>⑤ has gone out → <b>결과</b></li>
+      <li>① just married → 완료</li>
+      <li>② for five days → 계속</li>
+      <li>③ since she was born → 계속</li>
+      <li>④ <b>never solved</b> → 경험 ✓</li>
+      <li>⑤ has gone out → 결과</li>
     </ul>`
   },
   {
-    no:26, topic:"현재완료로 변형",
-    q:"주어진 문장의 시제를 현재완료로 고치시오.",
-    type:"multi-fill",
-    fields:[
-      {label:"(1) I wrote the poem for myself. → ", answer:"I have written the poem for myself"},
-      {label:"(2) He found the gold ring. → ", answer:"He has found the gold ring"},
-      {label:"(3) She broke the vase. → ", answer:"She has broken the vase"}
-    ],
-    prev:"❌ 이전: 일부 과거분사 형태 오류",
-    explain:`불규칙 동사의 3단 변화 암기!
-    <ul>
-      <li>write - wrote - <span class="ans">written</span></li>
-      <li>find - found - <span class="ans">found</span></li>
-      <li>break - broke - <span class="ans">broken</span></li>
-    </ul>
-    주어가 단수(He, She)면 <b>has</b>, 1인칭(I)이면 <b>have</b>!`
-  },
-  {
-    no:31, topic:"영작 (결과 용법)",
-    q:'주어진 우리말을 영어로 바르게 옮길 때 가장 알맞은 것은? "나는 강아지를 잃어버렸다. (그래서 지금은 강아지가 없다.)"',
+    no:23, topic:"같은 용법 찾기 (경험)",
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:"&lt;보기&gt; My family <u>has eaten</u> Spanish foods <u>twice</u>.",
     type:"single",
     choices:[
-      "I will lose my puppy.",
-      "I have lost my puppy.",
-      "I lost my puppy.",
-      "I lose my puppy.",
-      "I did lose my puppy."
+      "They <u>have not finished</u> their homework <u>yet</u>.",
+      "We <u>have just eaten</u> all the pizza.",
+      "Minji <u>has gone</u> to Europe.",
+      "They <u>have not spoken</u> <u>since the fight</u>.",
+      "I <u>have never tried</u> skydiving <u>before</u>."
     ],
-    answer:1,
-    prev:"❌ 이전 답: ② (실은 ②가 정답이지만 다시 한번!)",
-    explain:`"잃어버려서 지금도 없다" → <span class="ans">결과 용법</span> = 현재완료!
+    answer:4,
+    explain:`&lt;보기&gt;의 <b>twice</b>(두 번) → <span class="ans">경험</span>!
     <ul>
-      <li>have/has + p.p. (lost)</li>
-      <li>I <b>have lost</b> my puppy. (지금도 없음)</li>
+      <li>① not yet → 완료</li>
+      <li>② just eaten → 완료</li>
+      <li>③ has gone to → 결과</li>
+      <li>④ since the fight → 계속</li>
+      <li>⑤ <b>never tried ... before</b> → 경험 ✓</li>
+    </ul>`
+  },
+  {
+    no:25, topic:"용법이 다른 짝",
+    q:"다음 중 짝지어진 문장의 현재완료 용법이 서로 <b>다른</b> 것은?",
+    type:"single",
+    choices:[
+      "I have forgotten my friend's address. / She has gone to America.",
+      "I have already finished my homework. / She has just done it.",
+      "How long have you been in Korea? / We have hurt the Earth so much until now.",
+      "I have lost my wallet. / I have been to Italy to eat the famous pizza.",
+      "Peter has exercised since last year. / Daisy has learned Chinese for three years."
+    ],
+    answer:3,
+    explain:`각 짝의 용법 비교!
+    <ul>
+      <li>① forgotten(결과) / gone(결과) → 같음</li>
+      <li>② already(완료) / just(완료) → 같음</li>
+      <li>③ How long ~ been(계속) / until now(계속) → 같음</li>
+      <li>④ <b>lost(결과)</b> / <b>been to Italy(경험)</b> → <span class="ans">다름!</span> ✓</li>
+      <li>⑤ since(계속) / for(계속) → 같음</li>
     </ul>
-    💡 "I lost my puppy."(과거)는 그냥 잃어버린 사실만 의미 - 지금 찾았을 수도 있음!`
+    💡 have gone to = 결과 / have been to = 경험!`
+  },
+  {
+    no:28, topic:"글의 주제",
+    q:"글의 주제로 가장 알맞은 것은?",
+    box:"Our class has cleaned the playground together.\nWe have picked up trash and planted flowers.\nIt looks much better now.\nWe have learned that small actions can make big changes.",
+    type:"single",
+    choices:[
+      "The importance of teamwork and care",
+      "How to plant flowers",
+      "How to build a playground",
+      "The rules of the park",
+      "Why people litter"
+    ],
+    answer:0,
+    explain:`핵심: "작은 행동이 큰 변화를 만든다 + 함께 청소함"
+    <ul>
+      <li>① <span class="ans">팀워크와 배려의 중요성</span> ✓</li>
+      <li>②~⑤ 본문의 일부 단어와 관련 있지만 전체 주제는 아님</li>
+    </ul>
+    💡 마지막 문장이 주제일 때가 많아요!`
+  },
+  {
+    no:30, topic:"어법상 알맞은 것",
+    q:"다음 대화의 밑줄 친 ⓐ~ⓔ 중, <b>어법상 알맞은</b> 것은?",
+    box:"Jinho: ⓐ When have you come to Korea?\nFlora: ⓑ I have come to Korea two months ago.\nJinho: Can you speak Korean?\nFlora: Yes, I can. ⓒ I have learned it for two years.\nJinho: ⓓ Have you ever sang a Korean song?\nFlora: ⓔ No, I didn't. Can you teach me?",
+    type:"single",
+    choices:["ⓐ","ⓑ","ⓒ","ⓓ","ⓔ"],
+    answer:2,
+    explain:`<ul>
+      <li>ⓐ <b>When</b>은 특정 시점을 묻는 의문사 → 현재완료와 같이 못 씀 ❌</li>
+      <li>ⓑ <b>two months ago</b>(과거시점) → 현재완료와 같이 못 씀 ❌</li>
+      <li>ⓒ <b>have learned ... for two years</b> → 계속 용법 OK ✓ <span class="ans">정답!</span></li>
+      <li>ⓓ <b>sang</b>은 과거형, p.p.는 <b>sung</b> ❌</li>
+      <li>ⓔ "Have you ~?"의 답은 "No, I haven't" (didn't ❌)</li>
+    </ul>
+    💡 ago, yesterday, last~, when 같은 명백한 과거 표현은 현재완료와 못 씀!`
+  },
+  {
+    no:33, topic:"경험 의미 문장 개수",
+    q:"다음 중 '경험'의 의미로 해석되는 문장의 총 개수는?",
+    box:"● Have you ever heard of the festival?\n● How long have you stayed here?\n● Have you written the letter yet?\n● We have been friends for a long time.\n● They haven't eaten Japanese foods before.",
+    type:"single",
+    choices:["1개","2개","3개","4개","5개"],
+    answer:1,
+    explain:`<ul>
+      <li>● <b>ever heard</b> → 경험 ✓</li>
+      <li>● How long ~ stayed → 계속</li>
+      <li>● ~ yet → 완료</li>
+      <li>● for a long time → 계속</li>
+      <li>● <b>haven't eaten ... before</b> → 경험 ✓</li>
+    </ul>
+    경험 = 2개 → <span class="ans">②</span>`
   },
   {
     no:37, topic:"전치사 for/during/since",
-    q:'빈칸에 알맞은 말? "나는 3주 동안 이 책을 통독하고 있다." = I have read through ____ three weeks.',
-    type:"single",
-    choices:["for","during","since","at","in"],
-    answer:0,
-    prev:"❌ 이전 답: during (틀림)",
+    q:'다음 우리말 뜻에 맞도록 빈칸에 알맞은 말을 쓰시오. "나는 3주 동안 이 책을 통독하고 있다." = I have read through ____ three weeks.',
+    type:"input",
+    answer:"for",
+    placeholder:"한 단어",
     explain:`<ul>
       <li><b>for + 숫자/기간</b>: for three weeks, for two hours</li>
-      <li><b>during + 명사</b>: during the vacation, during the meeting</li>
-      <li><b>since + 시점</b>: since 2020, since last year</li>
+      <li><b>during + 명사</b>: during the vacation</li>
+      <li><b>since + 시점</b>: since 2020</li>
     </ul>
     "three weeks(3주)" 숫자 기간 → <span class="ans">for</span>!`
   },
   {
-    no:41, topic:"글의 내용",
-    q:"글에서 알 수 있는 내용은? David has played basketball since he was ten. He practices every day with his friends. He has joined many competitions. Now he dreams of becoming a professional player.",
+    no:41, topic:"글의 내용 파악",
+    q:"글에서 알 수 있는 내용은?",
+    box:"David has played basketball since he was ten.\nHe practices every day with his friends.\nHe has joined many competitions.\nNow he dreams of becoming a professional player.",
     type:"single",
     choices:[
       "David has just started basketball.",
@@ -555,220 +428,266 @@ const problems = [
       "David has never joined a game."
     ],
     answer:2,
-    prev:"❌ 이전 답: ⑤ (틀림)",
-    explain:`<b>since he was ten</b> = 10살부터 → 오랜 기간 농구를 함
+    explain:`<b>since he was ten</b> = 10살부터 → 오랫동안 농구를 함
     <ul>
-      <li>① 막 시작했다 → 본문과 반대</li>
-      <li>② 스포츠를 싫어한다 → X (every day 연습)</li>
-      <li>③ <b>오랫동안 농구를 해왔다</b> → ✓ 정답!</li>
-      <li>④ 선생님이다 → 본문에 없음</li>
-      <li>⑤ 경기 참가 안 함 → joined many competitions와 모순</li>
+      <li>③ <span class="ans">David has played basketball for many years.</span> ✓</li>
+    </ul>
+    💡 본문의 since/for 표현 → "오랫동안 ~해왔다"는 의미와 연결!`
+  },
+  {
+    no:43, topic:"같은 용법 찾기 (완료)",
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:"&lt;보기&gt; Sally <u>has just arrived</u> at my house.",
+    type:"single",
+    choices:[
+      "He <u>has lived</u> in Seoul <u>since 2005</u>.",
+      "I <u>have been</u> here <u>for three months</u>.",
+      "She <u>has been</u> a member of the club <u>for five years</u>.",
+      "Tony <u>has already finished</u> his homework.",
+      "He <u>has been</u> the leader of our class <u>since March</u>."
+    ],
+    answer:3,
+    explain:`&lt;보기&gt;의 <b>just arrived</b> → <span class="ans">완료</span>!
+    <ul>
+      <li>①②③⑤ 모두 since/for → 계속</li>
+      <li>④ <b>already finished</b> → 완료 ✓</li>
     </ul>`
   },
   {
     no:44, topic:"틀린 부분 고치기",
-    q:'다음 밑줄 친 틀린 것을 바르게 고쳐 쓰시오. "그는 그림을 아직 그리지 못했다." = He hasn\'t draw the picture yet.',
+    q:'밑줄 친 부분의 틀린 것을 찾아 바르게 고쳐 쓰시오. "그는 그림을 아직 그리지 못했다." = He <u>hasn\'t draw</u> the picture <u>yet</u>.',
     type:"input",
     answer:"drawn",
-    placeholder:"고쳐야 할 단어 한 개",
-    prev:"❌ 이전 답: yet → already (틀림! 진짜 오류는 draw → drawn)",
+    placeholder:"draw를 알맞은 형태로",
     explain:`현재완료는 <b>have/has + 과거분사(p.p.)</b>!
     <ul>
       <li>draw - drew - <span class="ans">drawn</span></li>
       <li>"hasn't <s>draw</s>" → "hasn't <b>drawn</b>" ✓</li>
     </ul>
-    "yet"은 부정문에서 "아직"의 의미로 옳게 사용됨. <b>draw → drawn</b>이 정답!`
-  },
-  {
-    no:45, topic:"빈칸 채우기",
-    q:"우리는 서로 10년 동안 알아 왔다. (know) = We ____ ____ each other for ten years.",
-    type:"input",
-    answer:"have known",
-    placeholder:"두 단어",
-    prev:"❌ 이전 답: has krown (틀림! 철자도 오류, has → have)",
-    explain:`<ul>
-      <li>주어 We → <b>have</b> (NOT has!)</li>
-      <li>know - knew - <span class="ans">known</span> (철자 주의: krown ❌)</li>
-    </ul>
-    완성: We <b>have known</b> each other for ten years.`
+    "yet"은 부정문에서 "아직"의 의미로 옳게 쓰임. 고쳐야 할 단어는 <b>draw → drawn</b>!`
   },
   {
     no:46, topic:"용법이 다른 하나",
-    q:"다음 중 밑줄 친 부분의 쓰임이 나머지와 다른 하나는?",
+    q:"다음 중 밑줄 친 부분의 쓰임이 나머지와 <b>다른</b> 하나는?",
     type:"single",
     choices:[
-      "We have been to America before.",
-      "They have lived here for 5 years.",
-      "She has seen the movie before.",
-      "Have you ever met him?",
-      "I have never had Chinese food."
+      "We <u>have been</u> to America <u>before</u>.",
+      "They <u>have lived</u> here <u>for 5 years</u>.",
+      "She <u>has seen</u> the movie <u>before</u>.",
+      "<u>Have</u> you <u>ever met</u> him?",
+      "I <u>have never had</u> Chinese food."
     ],
     answer:1,
-    prev:"❌ 이전 답: ① (틀림)",
-    explain:`①③④⑤ 모두 <b>경험</b>!
+    explain:`①③④⑤ 모두 <b>경험</b>(before, ever, never)!
     <ul>
-      <li>① been to America <b>before</b> → 경험</li>
-      <li>② <b>lived ... for 5 years</b> → <span class="ans">계속</span> ✓</li>
-      <li>③ seen ... before → 경험</li>
-      <li>④ ever met → 경험</li>
-      <li>⑤ never had → 경험</li>
+      <li>① before → 경험</li>
+      <li>② <b>for 5 years</b> → <span class="ans">계속</span> ✓</li>
+      <li>③ before → 경험</li>
+      <li>④ ever → 경험</li>
+      <li>⑤ never → 경험</li>
     </ul>`
   },
   {
-    no:49, topic:"용법 쓰기",
-    q:"밑줄 친 부분의 용법이 무엇인지 각각 쓰시오.",
-    type:"multi-fill",
-    fields:[
-      {label:"1) Jason has lost his camera. → 용법:", answer:"결과"},
-      {label:"2) We have lived in Seoul since 2010. → 용법:", answer:"계속"}
-    ],
-    prev:"❌ 이전 답: 1)완료, 2)경험 (둘 다 틀림)",
-    explain:`<ul>
-      <li>1) <b>has lost</b> = 잃어버려 지금도 없음 → <span class="ans">결과</span></li>
-      <li>2) <b>since 2010</b> = 2010년부터 지금까지 살고 있음 → <span class="ans">계속</span></li>
-    </ul>
-    💡 "lose, go, break"가 결과 용법의 단골 동사!`
-  },
-  {
-    no:50, topic:"어색한 대답 찾기",
-    q:"다음 대화의 빈칸에 들어갈 말로 어색한 것은? A: How was your weekend? A: Good. I went shopping. What did you do? B: ____",
+    no:47, topic:"같은 용법 찾기 (결과)",
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:"&lt;보기&gt; I <u>have lost</u> my new wallet.",
     type:"single",
     choices:[
-      "I went shopping, too.",
-      "I was at home all day.",
-      "I went swimming.",
-      "I played baseball.",
-      "I have a book."
-    ],
-    answer:4,
-    prev:"❌ 이전 답: ⑤ (실제로는 ⑤가 정답!)",
-    explain:`A가 "What did you do?" (과거 시제)로 물었어요!
-    <ul>
-      <li>①~④ 모두 <b>과거 시제</b>로 답변 → 자연스러움</li>
-      <li>⑤ "I have a book." → <b>현재 시제</b>이고 의미도 동문서답 → <span class="ans">어색!</span></li>
-    </ul>
-    💡 시제 일치가 중요! 과거 질문에는 과거 답변!`
-  },
-  {
-    no:51, topic:"틀린 부분 고치기",
-    q:'"그녀는 이미 그 일을 끝마쳤다." = She is already done the work. 틀린 부분을 바르게 고친 것은?',
-    type:"single",
-    choices:["is → has","already → then","done → did","the → a","work → novel"],
-    answer:0,
-    prev:"❌ 이전 답: ① (실제로는 ①이 정답!)",
-    explain:`현재완료는 <b>have/has + p.p.</b>!
-    <ul>
-      <li>"is done"은 수동태 (그녀가 끝내진다? 의미 X)</li>
-      <li>능동의 "끝마쳤다" → <span class="ans">has done</span></li>
-    </ul>
-    She <b>has</b> already done the work. (정답)`
-  },
-  {
-    no:54, topic:"같은 용법 찾기 (결과)",
-    q:'다음 중 밑줄 친 부분의 쓰임이 <보기>와 같은 것은? <보기> He has gone to America. (결과)',
-    type:"single",
-    choices:[
-      "I have lost my wallet.",
-      "Kelly has been to Europe.",
-      "She has never studied Spanish.",
-      "We have lived in Busan for 5 years.",
-      "I have just finished writing a letter."
+      "My friend <u>has gone</u> to America.",
+      "It <u>has rained</u> <u>since last week</u>.",
+      "He <u>hasn't finished</u> his work <u>yet</u>.",
+      "He <u>has already solved</u> this difficult problem.",
+      "<u>Have</u> you <u>ever been</u> to Jeju Island?"
     ],
     answer:0,
-    prev:"❌ 이전 답: ② (틀림)",
-    explain:`<보기>는 <b>has gone to</b> = <span class="ans">결과</span>!
+    explain:`&lt;보기&gt;의 <b>have lost</b>(잃어버려서 지금도 없음) → <span class="ans">결과</span>!
     <ul>
-      <li>① <b>have lost</b> (잃어버려 없음) → <b>결과</b> ✓</li>
-      <li>② have been to Europe → 경험</li>
-      <li>③ never studied → 경험</li>
-      <li>④ for 5 years → 계속</li>
-      <li>⑤ just finished → 완료</li>
+      <li>① <b>has gone to</b> → 결과 ✓</li>
+      <li>② since last week → 계속</li>
+      <li>③ not yet → 완료</li>
+      <li>④ already → 완료</li>
+      <li>⑤ ever → 경험</li>
     </ul>
     💡 결과의 단골 동사: <b>lose, go, break</b>`
   },
   {
-    no:56, topic:"빈칸 짝 고르기",
-    q:'"파리에 가본 적 있니?" → ____(1)____ you ever ____(2)____ Paris?',
+    no:54, topic:"같은 용법 찾기 (결과)",
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:"&lt;보기&gt; He <u>has gone</u> to America.",
     type:"single",
     choices:[
-      "(1) Has (2) been to","(1) Have (2) been to","(1) Had (2) been to","(1) Has (2) are to","(1) Have (2) are to"
+      "I <u>have lost</u> my wallet.",
+      "Kelly <u>has been</u> to Europe.",
+      "She <u>has never studied</u> Spanish.",
+      "We <u>have lived</u> in Busan <u>for 5 years</u>.",
+      "I <u>have just finished</u> writing a letter."
     ],
-    answer:1,
-    prev:"❌ 이전 답: ② (실제 ②가 정답!)",
-    explain:`경험 의문문: <b>Have/Has + 주어 + ever + p.p.?</b>
+    answer:0,
+    explain:`&lt;보기&gt;는 <b>has gone to</b> → <span class="ans">결과</span>!
     <ul>
-      <li>주어 you → <span class="ans">Have</span></li>
-      <li>"~에 가본 적 있다" → <span class="ans">have been to</span></li>
-    </ul>
-    Have you ever <b>been to</b> Paris?`
-  },
-  {
-    no:60, topic:"용법 밝히기",
-    q:"빈칸에 알맞은 말과 현재완료 용법을 밝히시오.",
-    type:"multi-fill",
-    fields:[
-      {label:"(1) I have ____ ____ the work. (just, finish)", answer:"just finished"},
-      {label:"(1)의 용법은? (경험/계속/완료/결과)", answer:"완료"},
-      {label:"(2) She has ____ ____ at my home. (never, stay)", answer:"never stayed"},
-      {label:"(2)의 용법은? (경험/계속/완료/결과)", answer:"경험"}
-    ],
-    prev:"❌ 이전: just finished/완료, never stayed/경험",
-    explain:`<ul>
-      <li>(1) <b>just</b> = 막 → <span class="ans">완료</span></li>
-      <li>(2) <b>never</b> = 한 번도 ~없다 → <span class="ans">경험</span></li>
+      <li>① <b>have lost</b>(없어진 채) → 결과 ✓</li>
+      <li>② have been to → 경험</li>
+      <li>③ never → 경험</li>
+      <li>④ for 5 years → 계속</li>
+      <li>⑤ just finished → 완료</li>
     </ul>`
   },
   {
-    no:61, topic:"전치사 고르기",
-    q:"괄호 안에서 알맞은 말을 고르시오. I have played computer games (for, because, when) two hours.",
+    no:55, topic:"문장 순서 (편지 보내기)",
+    q:"올바른 순서를 고르시오.",
+    box:"A. I have written a letter to my cousin in Canada.\nB. I have found some photos to send with it.\nC. I have put the letter and photos in an envelope.\nD. I have already mailed it at the post office.",
     type:"single",
-    choices:["for","because","when"],
-    answer:0,
-    prev:"❌ 이전 답: 다른 답 선택",
-    explain:`"두 시간 동안" 게임했다 → 기간!
+    choices:["B-A-C-D","A-B-C-D","A-C-B-D"],
+    answer:1,
+    explain:`편지 보내는 자연스러운 순서!
+    <ol>
+      <li>A. 사촌에게 편지를 씀 (먼저)</li>
+      <li>B. 함께 보낼 사진 찾음</li>
+      <li>C. 편지와 사진을 봉투에 넣음</li>
+      <li>D. 우체국에서 부침 (already)</li>
+    </ol>
+    정답: <span class="ans">A-B-C-D</span> → ②`
+  },
+  {
+    no:58, topic:"같은 용법 찾기 (경험)",
+    q:"다음 밑줄 친 부분과 용법이 같은 것은?",
+    box:"I <u>have tried</u> Korean kimchi <u>once</u>.",
+    type:"single",
+    choices:[
+      "The girl <u>has lost</u> her book.",
+      "The jet <u>has just landed</u>.",
+      "She <u>has never been</u> on class.",
+      "The boat <u>has already arrived</u>.",
+      "Junho <u>has studied</u> English <u>for 3 years</u>."
+    ],
+    answer:2,
+    explain:`&lt;보기&gt;의 <b>once</b>(한 번) → <span class="ans">경험</span>!
     <ul>
-      <li><b>for + 기간</b>: for two hours = 두 시간 동안</li>
-      <li>because = ~ 때문에 (이유)</li>
-      <li>when = ~할 때</li>
+      <li>① has lost → 결과</li>
+      <li>② just landed → 완료</li>
+      <li>③ <b>never been</b> → 경험 ✓</li>
+      <li>④ already arrived → 완료</li>
+      <li>⑤ for 3 years → 계속</li>
     </ul>
-    정답: <span class="ans">for</span>`
+    💡 once, twice, three times = 경험의 단서!`
   },
   {
     no:62, topic:"용법 짝짓기",
-    q:"주어진 현재완료 문장의 알맞은 용법을 찾아 연결하시오.",
+    q:"주어진 현재완료 문장의 알맞은 용법을 찾아 연결하시오. (경험/계속/결과)",
     type:"multi-fill",
     fields:[
       {label:"(1) He has worked here since 2002. → 용법:", answer:"계속"},
       {label:"(2) He has gone to Italy. → 용법:", answer:"결과"},
       {label:"(3) I have been to Italy twice. → 용법:", answer:"경험"}
     ],
-    prev:"❌ 이전 답: (1)경험, (2)결과, (3)계속 (1번,3번 틀림)",
     explain:`<ul>
-      <li>(1) <b>since 2002</b> → <span class="ans">계속</span> (2002년부터 지금까지)</li>
-      <li>(2) <b>has gone to</b> → <span class="ans">결과</span> (가버려서 없음)</li>
-      <li>(3) <b>been to ... twice</b> → <span class="ans">경험</span> (두 번 가봄)</li>
-    </ul>`
+      <li>(1) <b>since 2002</b> → <span class="ans">계속</span></li>
+      <li>(2) <b>has gone to</b>(가버려 없음) → <span class="ans">결과</span></li>
+      <li>(3) <b>been to ... twice</b> → <span class="ans">경험</span></li>
+    </ul>
+    💡 have gone to ↔ have been to 구분!`
   },
   {
     no:63, topic:"같은 용법 찾기 (계속)",
-    q:'다음 중 밑줄 친 부분의 쓰임이 <보기>와 같은 것은? <보기> I have not eaten anything all day. (계속)',
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:"&lt;보기&gt; I <u>have not eaten</u> anything <u>all day</u>.",
     type:"single",
     choices:[
-      "I have lost my pen.",
-      "I have ever been to London.",
-      "She has already finished her homework.",
-      "He has not bought the flowers yet.",
-      "She has been in her friend's room for one hour."
+      "I <u>have lost</u> my pen.",
+      "I <u>have ever been</u> to London.",
+      "She <u>has already finished</u> her homework.",
+      "He <u>has not bought</u> the flowers <u>yet</u>.",
+      "She <u>has been</u> in her friend's room <u>for one hour</u>."
     ],
     answer:4,
-    prev:"❌ 이전 답: ③ (틀림)",
-    explain:`<보기>의 <b>all day</b>는 <span class="ans">계속</span>!
+    explain:`&lt;보기&gt;의 <b>all day</b> → <span class="ans">계속</span>!
     <ul>
-      <li>① have lost (잃어 없음) → 결과</li>
-      <li>② ever been → 경험</li>
-      <li>③ already finished → 완료</li>
+      <li>① 잃어버림 → 결과</li>
+      <li>② ever → 경험</li>
+      <li>③ already → 완료</li>
       <li>④ not yet → 완료</li>
-      <li>⑤ <b>for one hour</b> → <span class="ans">계속</span> ✓</li>
+      <li>⑤ <b>for one hour</b> → 계속 ✓</li>
+    </ul>`
+  },
+  {
+    no:67, topic:"같은 용법 찾기 (경험)",
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:'&lt;보기&gt; <u>Have</u> you <u>ever watched</u> the movie "Frozen"?',
+    type:"single",
+    choices:[
+      "We <u>have been</u> friends <u>for ten years</u>.",
+      "I <u>have lived</u> in Busan <u>for three years</u>.",
+      "I <u>have met</u> a famous movie star <u>before</u>.",
+      "People <u>have enjoyed</u> the story <u>for a long time</u>.",
+      "He <u>has played</u> basketball <u>since he was 10 years old</u>."
+    ],
+    answer:2,
+    explain:`&lt;보기&gt;의 <b>ever</b> → <span class="ans">경험</span>!
+    <ul>
+      <li>①②④⑤ 모두 for/since → 계속</li>
+      <li>③ <b>met ... before</b> → 경험 ✓</li>
+    </ul>`
+  },
+  {
+    no:68, topic:"빈칸 (A)(B)(C)",
+    q:"다음 빈칸 (A), (B), (C)에 들어갈 말로 바르게 짝지어진 것은?",
+    box:"• He (A)____ his wallet yesterday.\n• They have known each other (B)____ last month.\n• Justin (C)____ the picture before.",
+    type:"single",
+    choices:[
+      "(A) has lost (B) for (C) has seen",
+      "(A) has lost (B) since (C) has seen",
+      "(A) lost (B) since (C) has seen",
+      "(A) lost (B) for (C) seen",
+      "(A) lost (B) since (C) saw"
+    ],
+    answer:2,
+    explain:`<ul>
+      <li>(A) <b>yesterday</b>(과거시점) → 과거 → <span class="ans">lost</span></li>
+      <li>(B) <b>last month</b>(시점) → <span class="ans">since</span></li>
+      <li>(C) <b>before</b>(경험) → <span class="ans">has seen</span></li>
+    </ul>
+    💡 yesterday, last~, ago는 현재완료 ❌!`
+  },
+  {
+    no:69, topic:"같은 용법 찾기 (경험)",
+    q:"다음 밑줄 친 부분과 용법이 같은 것은?",
+    box:"I <u>have eaten</u> Chinese food <u>before</u>.",
+    type:"single",
+    choices:[
+      "I <u>have just returned</u> from school.",
+      "I <u>have known</u> him <u>for two years</u>.",
+      "<u>Have</u> you <u>ever seen</u> chicken flying away?",
+      "They <u>have already started</u> their reports.",
+      "He <u>has lived</u> in Paris <u>since he was born</u>."
+    ],
+    answer:2,
+    explain:`&lt;보기&gt;의 <b>before</b> → <span class="ans">경험</span>!
+    <ul>
+      <li>① just returned → 완료</li>
+      <li>② for two years → 계속</li>
+      <li>③ <b>ever seen</b> → 경험 ✓</li>
+      <li>④ already → 완료</li>
+      <li>⑤ since → 계속</li>
+    </ul>`
+  },
+  {
+    no:70, topic:"같은 용법 찾기 (경험)",
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:"&lt;보기&gt; My brother <u>has ridden</u> a horse <u>before</u>.",
+    type:"single",
+    choices:[
+      "How long <u>have</u> you <u>stayed</u> here?",
+      "We <u>have been</u> there <u>since May</u>.",
+      "I <u>have known</u> her <u>for a long time</u>.",
+      "We <u>have never eaten</u> Italian food.",
+      "Simon <u>has already finished</u> his homework."
+    ],
+    answer:3,
+    explain:`&lt;보기&gt;의 <b>before</b> → <span class="ans">경험</span>!
+    <ul>
+      <li>①②③ 모두 계속</li>
+      <li>④ <b>never eaten</b> → 경험 ✓</li>
+      <li>⑤ already → 완료</li>
     </ul>`
   },
   {
@@ -779,54 +698,54 @@ const problems = [
       {label:"1) I have been to London twice. → 용법:", answer:"경험"},
       {label:"2) He hasn't finished the assignment yet. → 용법:", answer:"완료"}
     ],
-    prev:"❌ 이전 답: 1)경험, 2)계속 (2번 틀림)",
     explain:`<ul>
       <li>1) <b>twice</b>(두 번) → <span class="ans">경험</span></li>
-      <li>2) <b>yet</b>(아직 ~안했다) → <span class="ans">완료</span></li>
-    </ul>
-    💡 "yet"은 새로운 일을 끝냈는지 묻는 <b>완료</b>의 단서!`
-  },
-  {
-    no:74, topic:"글의 목적",
-    q:'글의 목적은 무엇인가? Dear Students, The school library has opened a "Reading Marathon." Many students have already joined. If you read ten books, you can win a prize. Come and join us today!',
-    type:"single",
-    choices:[
-      "To invite students to a reading event",
-      "To close the library early",
-      "To sell books to students",
-      "To announce exam results",
-      "To explain library rules"
-    ],
-    answer:0,
-    prev:"❌ 이전 답: ① (실제 ①이 정답이지만 다시!)",
-    explain:`핵심 문장: "Come and join us today!" = 오늘 참여해라!
-    <ul>
-      <li>학생들을 <b>독서 이벤트(Reading Marathon)에 초대</b>하는 글</li>
-      <li>① <span class="ans">To invite students to a reading event</span> ✓</li>
+      <li>2) <b>yet</b>(아직 ~ 안했다) → <span class="ans">완료</span></li>
     </ul>`
   },
   {
-    no:78, topic:"같은 용법 찾기 (경험)",
-    q:'다음 중 밑줄 친 부분의 쓰임이 <보기>와 같은 것은? <보기> She has read "Twilight" twice.',
+    no:77, topic:"경험 의미 찾기",
+    q:"다음 현재완료 문장 중 <b>경험</b>으로 쓰인 것은?",
     type:"single",
     choices:[
-      "She has just broken the frame.",
-      "I have worked here since January.",
-      "She has already finished her homework.",
-      "Justin has gone to Paris with his family.",
-      "Have you ever eaten Japanese food?"
+      "He has already invented it.",
+      "I have just read this book.",
+      "She hasn't used the bag yet.",
+      "Minju has just begun her homework.",
+      "She has never heard of him."
     ],
     answer:4,
-    prev:"❌ 이전 답: ④ (틀림! ④는 결과, 정답은 ⑤ 경험)",
-    explain:`<보기>의 <b>twice</b> → <span class="ans">경험</span>!
+    explain:`<ul>
+      <li>① already → 완료</li>
+      <li>② just read → 완료</li>
+      <li>③ not yet → 완료</li>
+      <li>④ just begun → 완료</li>
+      <li>⑤ <b>never heard</b> → <span class="ans">경험</span> ✓</li>
+    </ul>
+    💡 never = 한 번도 ~없다 → 경험!`
+  },
+  {
+    no:78, topic:"같은 용법 찾기 (경험)",
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:'&lt;보기&gt; She <u>has read</u> "Twilight" <u>twice</u>.',
+    type:"single",
+    choices:[
+      "She <u>has just broken</u> the frame.",
+      "I <u>have worked</u> here <u>since January</u>.",
+      "She <u>has already finished</u> her homework.",
+      "Justin <u>has gone</u> to Paris with his family.",
+      "<u>Have</u> you <u>ever eaten</u> Japanese food?"
+    ],
+    answer:4,
+    explain:`&lt;보기&gt;의 <b>twice</b> → <span class="ans">경험</span>!
     <ul>
       <li>① just broken → 완료</li>
       <li>② since January → 계속</li>
-      <li>③ already finished → 완료</li>
-      <li>④ <b>has gone to</b> → <b>결과</b> (함정!)</li>
-      <li>⑤ <b>ever eaten</b> → <span class="ans">경험</span> ✓</li>
+      <li>③ already → 완료</li>
+      <li>④ has gone to → 결과 (함정!)</li>
+      <li>⑤ <b>ever eaten</b> → 경험 ✓</li>
     </ul>
-    💡 "have gone to"는 결과! 경험은 "have been to"!`
+    💡 ④번 함정 주의! have gone to는 결과!`
   },
   {
     no:80, topic:"O/X 표시",
@@ -837,118 +756,116 @@ const problems = [
       {label:"(2) I have gone to Paris. (O/X)", answer:"X"},
       {label:"(3) She has lost her watch. (O/X)", answer:"O"}
     ],
-    prev:"❌ 이전 답: O, O, O (2번 틀림)",
-    explain:`<b>have gone to</b>의 함정!
-    <ul>
-      <li>(1) He has bought → <b>O</b></li>
-      <li>(2) <b>I have gone to Paris</b> → <span class="ans">X</span> ❗<br/>
-      "내가 파리로 가버렸다"는 말이 안 됨! 내가 여기 있는데 어떻게 가버려? → "I have <b>been</b> to Paris"가 맞음</li>
+    explain:`<ul>
+      <li>(1) He has bought → <b>O</b> (3인칭 has + p.p.)</li>
+      <li>(2) <b>I have gone to Paris</b> → <span class="ans">X</span><br/>
+      "내가 가버려서 없다"는 말이 안 됨! → "I have <b>been</b> to Paris"가 맞음</li>
       <li>(3) She has lost → <b>O</b></li>
     </ul>
     💡 <b>1·2인칭(I, We, You)</b>은 have gone to 못 써!`
   },
   {
+    no:82, topic:"어법상 옳은 것",
+    q:"다음 중 <b>어법상 옳은</b> 것은?",
+    type:"single",
+    choices:[
+      "I have lose my bag.",
+      "You have gone to Busan.",
+      "He has know her for two years.",
+      "I have been to L.A.",
+      "She have found the key."
+    ],
+    answer:3,
+    explain:`<ul>
+      <li>① have <s>lose</s> → have <b>lost</b></li>
+      <li>② You have gone to → <b>2인칭은 have gone to ❌</b></li>
+      <li>③ has <s>know</s> → has <b>known</b></li>
+      <li>④ <b>I have been to L.A.</b> → 경험, 정확! ✓</li>
+      <li>⑤ She <s>have</s> → She <b>has</b></li>
+    </ul>
+    정답: <span class="ans">④</span>`
+  },
+  {
     no:84, topic:"영작",
-    q:"너는 그들과 함께 축구를 해본 적이 있니? (ever, play)",
+    q:"주어진 단어들을 이용하여 문장을 영작하시오. 너는 그들과 함께 축구를 해본 적이 있니? (ever, play)",
     type:"input",
     answer:"Have you ever played soccer with them",
-    placeholder:"문장 영작 (마침표/물음표 제외 가능)",
-    prev:"❌ 이전 답: Have you ever play the soccer with them (틀림 - play, the)",
-    explain:`두 가지 오류!
+    placeholder:"마침표/물음표 제외 가능",
+    explain:`두 가지 포인트!
     <ul>
       <li>① 현재완료는 p.p.: play → <span class="ans">played</span></li>
-      <li>② <b>운동 종목 앞에는 the 안 붙임</b>: <s>the soccer</s> → <span class="ans">soccer</span></li>
-      <li>(악기 앞에는 the: play <b>the</b> piano)</li>
+      <li>② <b>운동 종목 앞에는 the 안 붙임</b>: <s>the soccer</s> → <span class="ans">soccer</span><br/>
+      (악기 앞에는 the: play <b>the</b> piano)</li>
     </ul>
     완성: <b>Have you ever played soccer with them?</b>`
   },
   {
     no:85, topic:"같은 용법 짝짓기 (계속)",
     q:"&lt;보기&gt;의 밑줄 친 부분과 쓰임이 같은 것끼리 짝지어진 것?",
-    box:"&lt;보기&gt; The teacher <u>has taught</u> me <u>since I was ten years old</u>. (계속)\n\n(a) This wallet is the greatest gift I <u>have ever seen</u>.\n(b) I <u>have lived</u> in Seoul for ten years.\n(c) <u>Have</u> you ever <u>been</u> to London?\n(d) My brother <u>has learned</u> Chinese since last week.\n(e) He <u>has finished</u> the assignment already.",
+    box:"&lt;보기&gt; The teacher <u>has taught</u> me <u>since I was ten years old</u>.\n\nⓐ This wallet is the greatest gift I <u>have ever seen</u>.\nⓑ I <u>have lived</u> in Seoul <u>for ten years</u>.\nⓒ <u>Have</u> you <u>ever been</u> to London?\nⓓ My brother <u>has learned</u> Chinese <u>since last week</u>.\nⓔ He <u>has finished</u> the assignment <u>already</u>.",
     type:"single",
-    choices:[
-      "(a)(d)","(b)(d)","(b)(d)(e)","(a)(c)(d)","(b)(e)"
-    ],
+    choices:["ⓐ, ⓓ","ⓑ, ⓓ","ⓑ, ⓓ, ⓔ","ⓐ, ⓒ, ⓓ","ⓑ, ⓔ"],
     answer:1,
-    prev:"❌ 이전 답: ③ (틀림 - (e)는 already가 있어 완료 용법)",
-    explain:`<보기>는 <b>since</b> → <span class="ans">계속</span>!
-    각 문장:
+    explain:`&lt;보기&gt;는 <b>since</b> → <span class="ans">계속</span>!
     <ul>
-      <li>(a) ever seen → 경험</li>
-      <li>(b) <b>for ten years</b> → 계속 ✓</li>
-      <li>(c) ever been → 경험</li>
-      <li>(d) <b>since last week</b> → 계속 ✓</li>
-      <li>(e) finished already → 완료</li>
+      <li>ⓐ ever seen → 경험</li>
+      <li>ⓑ <b>for ten years</b> → 계속 ✓</li>
+      <li>ⓒ ever been → 경험</li>
+      <li>ⓓ <b>since last week</b> → 계속 ✓</li>
+      <li>ⓔ already → 완료</li>
     </ul>
-    계속 = (b)(d) → ②`
+    계속 = ⓑ, ⓓ → <b>②</b>`
   },
   {
-    no:87, topic:"문장 순서",
-    q:"문장들의 올바른 순서를 고르시오. A. I have just arrived at the airport. B. I have packed my bags and checked my ticket. C. I have said goodbye to my family. D. I am waiting to board the plane now.",
+    no:87, topic:"문장 순서 (공항 가기)",
+    q:"문장들의 올바른 순서를 고르시오.",
+    box:"A. I have just arrived at the airport.\nB. I have packed my bags and checked my ticket.\nC. I have said goodbye to my family.\nD. I am waiting to board the plane now.",
     type:"single",
     choices:["B-C-A-D","A-B-C-D","B-A-C-D"],
     answer:0,
-    prev:"❌ 이전 답: ③ B-A-C-D (틀림)",
-    explain:`공항 가기 전후 시간 순서!
+    explain:`공항 가기 자연스러운 순서!
     <ol>
-      <li>B. 짐 싸고 티켓 확인 (집에서)</li>
+      <li>B. 짐 싸고 티켓 확인 (집에서 준비)</li>
       <li>C. 가족과 작별 인사</li>
-      <li>A. 공항에 도착</li>
-      <li>D. 탑승 대기 중 (지금)</li>
+      <li>A. 공항에 도착 (just arrived)</li>
+      <li>D. 탑승 대기 (now)</li>
     </ol>
     정답: <span class="ans">B-C-A-D</span> → ①`
   },
   {
-    no:89, topic:"문장 순서",
-    q:"올바른 순서를 고르시오. A. We have saved money for two months. B. We have bought new paint and brushes. C. We have painted our classroom walls blue. D. Now everyone says our classroom looks bright and fresh.",
-    type:"single",
-    choices:["A-B-C-D","B-A-C-D","A-C-B-D"],
-    answer:0,
-    prev:"❌ 이전 답: ③ A-C-B-D (틀림)",
-    explain:`교실 페인트 칠하기 시간 순!
-    <ol>
-      <li>A. 두 달간 돈 모으기 (시작)</li>
-      <li>B. 페인트와 붓 사기</li>
-      <li>C. 교실 벽 칠하기</li>
-      <li>D. 사람들이 보기 좋다고 함 (현재)</li>
-    </ol>
-    정답: <span class="ans">A-B-C-D</span> → ①`
-  },
-  {
     no:90, topic:"빈칸 채우기 (계속)",
-    q:"그는 작년 이래로 여기에서 살고 있다. (live) = He ____ here ____ last year.",
-    type:"input",
-    answer:"has lived since",
-    placeholder:"세 단어 (동사 두 개 + 전치사)",
-    prev:"❌ 이전 답: has, last (since 누락)",
+    q:'주어진 말을 이용하여 빈칸에 알맞은 말을 쓰시오. "그는 작년 이래로 여기에서 살고 있다." (live) = He ____ here ____ last year.',
+    type:"multi-fill",
+    fields:[
+      {label:"첫 번째 빈칸 (두 단어):", answer:"has lived"},
+      {label:"두 번째 빈칸 (한 단어):", answer:"since"}
+    ],
     explain:`<ul>
       <li>주어 He → <b>has</b></li>
-      <li>live - lived - lived → <b>has lived</b></li>
-      <li>last year(시점) → <span class="ans">since</span></li>
+      <li>live → <b>lived</b> (규칙변화)</li>
+      <li>last year(시점) → <b>since</b></li>
     </ul>
-    He <b>has lived</b> here <b>since</b> last year.`
+    완성: He <span class="ans">has lived</span> here <span class="ans">since</span> last year.`
   },
   {
     no:92, topic:"용법이 다른 하나",
-    q:"다음 중 현재완료의 용법이 나머지와 다른 하나는?",
+    q:"다음 중 현재완료의 용법이 나머지와 <b>다른</b> 하나는?",
     type:"single",
     choices:[
-      "He has just written a letter.",
-      "My brother hasn't finished the homework yet.",
-      "We have already cleaned our room.",
-      "She has never visited Busan.",
-      "Have you finished the book already?"
+      "He <u>has just written</u> a letter.",
+      "My brother <u>hasn't finished</u> the homework <u>yet</u>.",
+      "We <u>have already cleaned</u> our room.",
+      "She <u>has never visited</u> Busan.",
+      "<u>Have</u> you <u>finished</u> the book <u>already</u>?"
     ],
     answer:3,
-    prev:"❌ 이전 답: ② (틀림)",
-    explain:`①②③⑤ 모두 <b>완료</b>!
+    explain:`①②③⑤ 모두 <b>완료</b> 단서(just/yet/already)!
     <ul>
-      <li>① <b>just</b> → 완료</li>
-      <li>② <b>not yet</b> → 완료</li>
-      <li>③ <b>already</b> → 완료</li>
+      <li>① just → 완료</li>
+      <li>② not yet → 완료</li>
+      <li>③ already → 완료</li>
       <li>④ <b>never visited</b> → <span class="ans">경험</span> ✓</li>
-      <li>⑤ <b>already</b> → 완료</li>
+      <li>⑤ already → 완료</li>
     </ul>`
   },
   {
@@ -960,284 +877,89 @@ const problems = [
       {label:"(2) Has he ever lived here? → 용법:", answer:"경험"},
       {label:"(3) Has the bell rung yet? → 용법:", answer:"완료"}
     ],
-    prev:"❌ 이전 답: 일부 오답",
     explain:`<ul>
       <li>(1) <b>before</b> → <span class="ans">경험</span></li>
       <li>(2) <b>ever</b> → <span class="ans">경험</span></li>
-      <li>(3) <b>yet</b>(이미/아직) → <span class="ans">완료</span></li>
+      <li>(3) <b>yet</b> → <span class="ans">완료</span></li>
     </ul>`
   },
   {
-    no:97, topic:"자연스러운 대화",
-    q:"다음 중 자연스러운 대화는?",
+    no:104, topic:"같은 용법 찾기 (계속)",
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:"&lt;보기&gt; I <u>have known</u> Jimmy <u>for 5 years</u>.",
     type:"single",
     choices:[
-      "A: Did you watch TV last night? B: Yes, I was.",
-      "A: Were you sick last week? B: I didn't go to school.",
-      "A: What did you do yesterday? B: I met Jane.",
-      "A: How was the concert? B: I went there.",
-      "A: Have you been to Korea? B: I like Korea."
+      "<u>Have</u> you <u>ever been</u> to France?",
+      "I <u>have never met</u> any movie stars.",
+      "She <u>has once lived</u> in New York.",
+      "I <u>have watched</u> the movie <u>twice</u>.",
+      "I <u>have lived</u> in Incheon <u>since I was 7</u>."
+    ],
+    answer:4,
+    explain:`&lt;보기&gt;의 <b>for 5 years</b> → <span class="ans">계속</span>!
+    <ul>
+      <li>① ever been → 경험</li>
+      <li>② never met → 경험</li>
+      <li>③ once → 경험</li>
+      <li>④ twice → 경험</li>
+      <li>⑤ <b>since I was 7</b> → 계속 ✓</li>
+    </ul>`
+  },
+  {
+    no:110, topic:"같은 용법 찾기 (완료)",
+    q:"다음 중 밑줄 친 부분의 쓰임이 &lt;보기&gt;와 같은 것은?",
+    box:"&lt;보기&gt; I <u>have already finished</u> my homework.",
+    type:"single",
+    choices:[
+      "He <u>has gone</u> to London.",
+      "<u>Have</u> you <u>ever seen</u> the Opera House?",
+      "He <u>has just arrived</u> at there.",
+      "We <u>have lived</u> in that house <u>for three years</u>.",
+      "She <u>has lost</u> her new bag."
     ],
     answer:2,
-    prev:"❌ 이전 답: ③ (실제 ③이 정답이지만 다시!)",
-    explain:`<ul>
-      <li>① Did you watch ~? → Yes, I did. (was 아님!)</li>
-      <li>② Were you sick? → Yes/No로 시작해야 자연스러움</li>
-      <li>③ <b>What did you do yesterday? → I met Jane.</b> ✓ <span class="ans">자연스러움!</span></li>
-      <li>④ How was ~? → It was good. (감상 답변)</li>
-      <li>⑤ Have you been to Korea? → Yes, I have. / No, I haven't.</li>
-    </ul>`
-  },
-  {
-    no:98, topic:"빈칸 단어",
-    q:"빈칸에 알맞은 말은? I can't find my umbrella. I think I have ____ it somewhere. It was raining when I came home.",
-    type:"single",
-    choices:["lost","lose","losing","left","looked"],
-    answer:0,
-    prev:"❌ 이전 답: ① (실제 ①이 정답이지만 다시!)",
-    explain:`현재완료 + 결과 용법!
+    explain:`&lt;보기&gt;의 <b>already</b> → <span class="ans">완료</span>!
     <ul>
-      <li>"우산을 어딘가에 잃어버린 것 같다" + "지금도 못 찾음"</li>
-      <li>have + p.p. → have <span class="ans">lost</span> ✓</li>
-      <li>lose - lost - lost</li>
+      <li>① has gone to → 결과</li>
+      <li>② ever seen → 경험</li>
+      <li>③ <b>just arrived</b> → 완료 ✓</li>
+      <li>④ for three years → 계속</li>
+      <li>⑤ has lost → 결과</li>
     </ul>`
   },
   {
-    no:99, topic:"용법 밝히기 + 빈칸",
-    q:"우리말에 맞도록 빈칸에 알맞은 말을 넣고 각 현재완료의 용법을 밝히시오.",
+    no:112, topic:"용법 밝히기",
+    q:"밑줄 친 부분의 용법이 무엇인지 각각 쓰시오.",
     type:"multi-fill",
     fields:[
-      {label:"(1) Jack은 중국에 가 본 적이 있다. = Jack has ____ ____ China. (두 단어)", answer:"been to"},
-      {label:"(1)의 용법:", answer:"경험"},
-      {label:"(2) 나는 이미 점심을 먹었다. = I have ____ eaten lunch.", answer:"already"},
-      {label:"(2)의 용법:", answer:"완료"},
-      {label:"(3) 우리는 2001년 이후로 죽 서울에 있어 왔다. = We ____ been in Seoul ____ 2001. (두 단어)", answer:"have since"},
-      {label:"(3)의 용법:", answer:"계속"}
+      {label:"1) He has been sick since last week. → 용법:", answer:"계속"},
+      {label:"2) We have just finished lunch. → 용법:", answer:"완료"}
     ],
-    prev:"❌ 이전: 일부 빈칸 오답",
     explain:`<ul>
-      <li>(1) <b>been to</b> = 가본 적 있다 → <span class="ans">경험</span></li>
-      <li>(2) <b>already</b> = 이미 → <span class="ans">완료</span></li>
-      <li>(3) <b>have ... since</b> 2001 → <span class="ans">계속</span></li>
-    </ul>
-    💡 since는 시점 앞, for는 기간 앞!`
+      <li>1) <b>since last week</b> → <span class="ans">계속</span></li>
+      <li>2) <b>just</b>(막 끝냈다) → <span class="ans">완료</span></li>
+    </ul>`
   },
   {
-    no:100, topic:"틀린 부분 고치기",
-    q:'다음 밑줄 친 부분을 바르게 고쳐 쓰시오. "나는 4일 동안 그림을 그려 왔다." = I have drew the picture during four days.',
-    type:"input",
-    answer:"drawn for",
-    placeholder:"두 단어 (수정 후)",
-    prev:"❌ 이전: 일부만 고침",
-    explain:`두 가지 오류!
-    <ul>
-      <li>① drew(과거) → <span class="ans">drawn</span>(과거분사)<br/>(draw - drew - drawn)</li>
-      <li>② during(+명사) → <span class="ans">for</span>(+숫자기간)</li>
-    </ul>
-    완성: I have <b>drawn</b> the picture <b>for</b> four days.`
-  },
-  {
-    no:101, topic:"단어 배열",
-    q:'"그는 전에 앨범을 보여 준 적이 있다." (showed, the album, has) = He ____ before.',
-    type:"input",
-    answer:"has showed the album",
-    placeholder:"3단어",
-    prev:"❌ 이전 답: has shown the album (showed가 주어진 단어!)",
-    explain:`주어진 단어를 그대로 사용!
-    <ul>
-      <li>show - showed - <b>shown/showed</b> (둘 다 가능)</li>
-      <li>주어진 단어가 <b>showed</b>이므로 → <span class="ans">has showed the album</span></li>
-    </ul>
-    완성: He <b>has showed the album</b> before.<br/>
-    💡 시험에서 주어진 단어는 그대로 사용!`
-  },
-  {
-    no:105, topic:"글의 주제",
-    q:"글의 주제로 가장 알맞은 것은? Our science club has made a new robot. It can move and talk like a person. We have worked on it for three months. We have learned a lot about teamwork and patience. The robot is our proudest project ever.",
+    no:121, topic:"어법상 올바른 문장",
+    q:"다음 중 <b>어법상 올바른</b> 문장을 고르시오.",
     type:"single",
     choices:[
-      "Building a robot through teamwork",
-      "How robots can replace people",
-      "Why science is difficult",
-      "How to use a robot",
-      "What robots eat"
+      "She has wash the dishes.",
+      "He has seen the accident yesterday.",
+      "I have knew them for a long time.",
+      "Becky has teaches English at the school.",
+      "Maria has broken the vase."
     ],
-    answer:0,
-    prev:"❌ 이전 답: ① (실제 ①이 정답이지만 다시!)",
-    explain:`핵심 키워드: <b>teamwork, patience, proudest project</b>
-    <ul>
-      <li>3개월간 팀워크로 로봇을 만들었다는 내용</li>
-      <li>① <span class="ans">Building a robot through teamwork</span> ✓</li>
-    </ul>`
-  },
-  {
-    no:106, topic:"빈칸 채우기 (계속)",
-    q:'"그는 지난 일요일 이래로 (계속) 여기에 있다." = He ____ here since last Sunday.',
-    type:"single",
-    choices:["be","been","has been","will be","is being"],
-    answer:2,
-    prev:"❌ 이전 답: ③ (실제 ③이 정답이지만 다시!)",
-    explain:`<b>since last Sunday</b> → 현재완료 계속!
-    <ul>
-      <li>be - was/were - <b>been</b></li>
-      <li>주어 He → has + been</li>
-    </ul>
-    He <span class="ans">has been</span> here since last Sunday.`
-  },
-  {
-    no:107, topic:"단어 배열",
-    q:'"그들은 2010년부터 서로 알아왔다." (since / have / 2010 / each / They / other / known)',
-    type:"input",
-    answer:"They have known each other since 2010",
-    placeholder:"7단어 영작 (마침표 제외)",
-    prev:"❌ 이전 답: They have known each other since 2010 (정답이지만 다시!)",
+    answer:4,
     explain:`<ul>
-      <li>주어 + have/has + p.p. + 목적어 + since + 시점</li>
-      <li>know - knew - <b>known</b></li>
-      <li>each other = 서로</li>
+      <li>① has <s>wash</s> → has <b>washed</b></li>
+      <li>② <b>yesterday</b>는 과거시점 → 현재완료와 못 씀 ❌</li>
+      <li>③ have <s>knew</s>(과거) → have <b>known</b>(p.p.)</li>
+      <li>④ has <s>teaches</s>(현재) → has <b>taught</b>(p.p.)</li>
+      <li>⑤ <b>has broken</b> → 정확! ✓</li>
     </ul>
-    완성: <span class="ans">They have known each other since 2010.</span>`
-  },
-  {
-    no:109, topic:"글의 요지",
-    q:"글의 요지로 가장 알맞은 것은? I have practiced the guitar for six months. At first, it was very hard for me. But I haven't given up. Now I can play some songs. I've learned that practice makes perfect.",
-    type:"single",
-    choices:[
-      "Playing guitar is easy.",
-      "Practice leads to improvement.",
-      "I have stopped practicing the guitar.",
-      "I want to buy a new guitar.",
-      "Learning music is boring."
-    ],
-    answer:1,
-    prev:"❌ 이전 답: ② (실제 ②가 정답이지만 다시!)",
-    explain:`핵심 문장: "<b>practice makes perfect</b>" (연습이 완벽함을 만든다)
-    <ul>
-      <li>처음엔 어려웠지만 포기하지 않고 연습해서 잘하게 됨</li>
-      <li>② <span class="ans">Practice leads to improvement.</span> (연습이 향상으로 이끈다) ✓</li>
-    </ul>`
-  },
-  {
-    no:111, topic:"자연스러운 대화",
-    q:"자연스러운 대화가 되도록 밑줄 친 부분에서 알맞은 말을 골라 기호로 쓰시오.",
-    type:"multi-fill",
-    fields:[
-      {label:"(1) A: What did you do last Saturday? B: (a) I will go hiking. / (b) I met him there. → 답:", answer:"b"},
-      {label:"(2) A: (a) How about going there? / (b) How did you go there? B: I went there by subway. → 답:", answer:"b"}
-    ],
-    prev:"❌ 이전 답: 일부 오답",
-    explain:`<ul>
-      <li>(1) "지난 주말에 뭐 했어?"(과거) → <b>I met him there</b>(과거 답변) → <span class="ans">b</span></li>
-      <li>(2) "지하철로 갔어"라는 답변 → "어떻게 갔니?"가 자연스러움 → <span class="ans">b</span> (How did you go there?)</li>
-    </ul>`
-  },
-  {
-    no:113, topic:"빈칸 단어 (경험 부정)",
-    q:'"나는 사자를 본 적이 없다." = I have ____ seen a lion.',
-    type:"single",
-    choices:["just","ever","never","already","yet"],
-    answer:2,
-    prev:"❌ 이전 답: ③ (실제 ③이 정답이지만 다시!)",
-    explain:`"본 적이 없다" = 부정 경험!
-    <ul>
-      <li><b>never</b> = 한 번도 ~ 없다</li>
-      <li>I have <span class="ans">never</span> seen a lion.</li>
-    </ul>
-    💡 ever는 의문문 (Have you ever seen ~?)에 쓰임!`
-  },
-  {
-    no:114, topic:"틀린 부분 고치기 (단어 교체)",
-    q:'"나는 종종 그를 방문한 적이 있다." = I have just visited him. 틀린 부분을 고치시오.',
-    type:"input",
-    answer:"sometimes",
-    placeholder:"just 자리에 들어갈 단어",
-    prev:"❌ 이전 답: just → sometimes (정답이지만 다시!)",
-    explain:`"종종" = <span class="ans">sometimes</span>
-    <ul>
-      <li><b>just</b> = 막, 방금 (완료)</li>
-      <li><b>sometimes</b> = 종종, 가끔 (반복적 경험)</li>
-    </ul>
-    완성: I have <b>sometimes</b> visited him.`
-  },
-  {
-    no:115, topic:"동사 형태 고치기",
-    q:"괄호 안의 동사를 알맞게 고쳐 빈 칸에 쓰시오. He has already ____ the truth. (know)",
-    type:"input",
-    answer:"known",
-    placeholder:"한 단어",
-    prev:"❌ 이전 답: krown (철자 오류!)",
-    explain:`know의 3단 변화: <b>know - knew - known</b>
-    <ul>
-      <li>철자 주의! <s>krown</s> ❌ → <span class="ans">known</span> ✓</li>
-    </ul>
-    He has already <b>known</b> the truth. = 그는 이미 진실을 알고 있다.`
-  },
-  {
-    no:118, topic:"빈칸 채우기 (완료)",
-    q:'"나는 피아노 레슨을 막 끝냈다." = I ____ ____ ____ the piano lessons. (finish, 세 단어)',
-    type:"input",
-    answer:"have just finished",
-    placeholder:"세 단어",
-    prev:"❌ 이전 답: have just finished (정답이지만 다시!)",
-    explain:`"막 끝냈다" → 완료 용법!
-    <ul>
-      <li>주어 I → <b>have</b></li>
-      <li>"막" → <b>just</b> (have와 p.p. 사이!)</li>
-      <li>finish - finished - finished</li>
-    </ul>
-    I <span class="ans">have just finished</span> the piano lessons.`
-  },
-  {
-    no:119, topic:"글의 요지",
-    q:"글의 요지로 가장 알맞은 것은? I have just cleaned my room. I have washed the windows and the floor. Mom has already looked around and smiled. She said, \"Good job!\" Now I can finally take a rest.",
-    type:"single",
-    choices:[
-      "Cleaning is fun.",
-      "I cleaned my room and feel good.",
-      "My mom cleaned my room.",
-      "I don't like cleaning.",
-      "The room is still messy."
-    ],
-    answer:1,
-    prev:"❌ 이전 답: ② (실제 ②가 정답이지만 다시!)",
-    explain:`내가 청소를 끝내고, 엄마도 칭찬해주셔서 기분이 좋고, 이제 쉴 수 있다는 내용
-    <ul>
-      <li>① 재미있다(X) - 본문에 없음</li>
-      <li>② <span class="ans">청소를 끝내서 기분이 좋다</span> ✓</li>
-      <li>③ 엄마가 청소함(X) - 내가 했음</li>
-      <li>④ 청소 싫다(X)</li>
-      <li>⑤ 아직 지저분(X) - 깨끗해짐</li>
-    </ul>`
-  },
-  {
-    no:120, topic:"두 문장 합치기",
-    q:'"He went to Ted\'s house last weekend. He is still there." = He ____ at Ted\'s house ____ last weekend.',
-    type:"single",
-    choices:[
-      "stays / for","has stayed / for","has stayed / since","has stayed / when","stays / since"
-    ],
-    answer:2,
-    prev:"❌ 이전 답: ③ (실제 ③이 정답이지만 다시!)",
-    explain:`"지난 주말에 갔다 + 지금도 있다" → <b>현재완료 계속</b>!
-    <ul>
-      <li>주어 He → <b>has stayed</b></li>
-      <li><b>last weekend</b>(시점) → <span class="ans">since</span></li>
-    </ul>
-    He <b>has stayed</b> at Ted's house <b>since</b> last weekend.`
-  },
-  {
-    no:122, topic:"같은 용법 찾기",
-    q:"<보기>에서 같은 용법 찾기. a. I have just made a cake. (완료) / b. He has never helped me before. (경험)",
-    type:"multi-fill",
-    fields:[
-      {label:"(1) She has taught my brother before. → (a/b)?", answer:"b"},
-      {label:"(2) I have heard a beautiful song now. → (a/b)?", answer:"a"}
-    ],
-    prev:"❌ 이전 답: (1) b, (2) a (정답이지만 다시!)",
-    explain:`<ul>
-      <li>(1) <b>before</b> → 경험 → <span class="ans">b</span></li>
-      <li>(2) <b>now</b>(방금) → 완료 → <span class="ans">a</span></li>
-    </ul>`
+    정답: <span class="ans">⑤</span><br/>break-broke-broken!`
   }
 ];
 
@@ -1252,14 +974,12 @@ function updateScore(){
   const rate = solved===0 ? 0 : Math.round(correct/solved*100);
   document.getElementById('rateQ').textContent = rate+"%";
   document.getElementById('progBar').style.width = (solved/total*100)+"%";
-  if(solved === total){
-    document.getElementById('celebrate').classList.add('show');
-  }
+  if(solved === total){ document.getElementById('celebrate').classList.add('show'); }
 }
 
 function normalize(s){return (s||'').trim().toLowerCase().replace(/\s+/g,' ').replace(/[.?!,]/g,'');}
 
-problems.forEach((p, idx) => {
+problems.forEach((p) => {
   const card = document.createElement('div');
   card.className = 'card';
   card.dataset.solved = "0";
@@ -1267,41 +987,39 @@ problems.forEach((p, idx) => {
   let choicesHTML = '';
   if(p.type==='single'){
     choicesHTML = '<div class="choices">' + p.choices.map((c,i)=>(
-      `<div class="choice" data-i="${i}"><span class="num">${i+1}</span><span>${c}</span></div>`
+      '<div class="choice" data-i="'+i+'"><span class="num">'+(i+1)+'</span><span>'+c+'</span></div>'
     )).join('') + '</div>';
   }
   if(p.type==='multi'){
-    choicesHTML = '<div class="choices" data-multi="1">' + p.choices.map((c,i)=>(
-      `<div class="choice" data-i="${i}"><span class="num">${i+1}</span><span>${c}</span></div>`
+    choicesHTML = '<div class="choices">' + p.choices.map((c,i)=>(
+      '<div class="choice" data-i="'+i+'"><span class="num">'+(i+1)+'</span><span>'+c+'</span></div>'
     )).join('') + '</div>';
   }
   if(p.type==='input'){
-    choicesHTML = `<div class="subq"><input class="fillin" type="text" placeholder="${p.placeholder||'정답 입력'}" /></div>`;
+    choicesHTML = '<div class="subq"><input class="fillin" type="text" placeholder="'+(p.placeholder||'정답 입력')+'" /></div>';
   }
   if(p.type==='multi-fill'){
     choicesHTML = p.fields.map((f,i)=>(
-      `<div class="subq"><span>${f.label}</span><input class="fillin" data-fi="${i}" type="text" placeholder="정답"/></div>`
+      '<div class="subq"><span>'+f.label+'</span><input class="fillin" data-fi="'+i+'" type="text" placeholder="정답"/></div>'
     )).join('');
   }
 
-  card.innerHTML = `
-    <div class="qhead">
-      <div class="qno">${p.no}</div>
-      <div class="qmeta">
-        <div class="qtopic">${p.topic}</div>
-        <div class="qtitle">${p.q}</div>
-      </div>
-    </div>
-    ${p.box ? `<div class="box">${p.box}</div>` : ''}
-    ${choicesHTML}
-    ${p.prev ? `<div class="prev-answer">${p.prev}</div>` : ''}
-    <div class="actions">
-      <button class="btn btn-check" data-action="check">정답 확인</button>
-      <button class="btn btn-reset" data-action="reset">다시 풀기</button>
-    </div>
-    <div class="feedback"></div>
-    <div class="explain" style="display:none">${p.explain}</div>
-  `;
+  card.innerHTML =
+    '<div class="qhead">'+
+      '<div class="qno">'+p.no+'</div>'+
+      '<div class="qmeta">'+
+        '<div class="qtopic">'+p.topic+'</div>'+
+        '<div class="qtitle">'+p.q+'</div>'+
+      '</div>'+
+    '</div>'+
+    (p.box ? '<div class="box">'+p.box+'</div>' : '')+
+    choicesHTML+
+    '<div class="actions">'+
+      '<button class="btn btn-check" data-action="check">정답 확인</button>'+
+      '<button class="btn btn-reset" data-action="reset">다시 풀기</button>'+
+    '</div>'+
+    '<div class="feedback"></div>'+
+    '<div class="explain" style="display:none">'+p.explain+'</div>';
 
   if(p.type==='single' || p.type==='multi'){
     const isMulti = p.type==='multi';
@@ -1363,11 +1081,12 @@ problems.forEach((p, idx) => {
       fb.className = 'feedback show ok';
       correct++;
     } else {
-      const ansText = (p.type==='single') ? `정답: ${p.answer+1}번`
-        : (p.type==='multi') ? `정답: ${p.answer.map(x=>x+1).join(', ')}번`
-        : (p.type==='input') ? `정답: ${p.answer}`
-        : `정답: ${p.fields.map(f=>f.answer).join(' / ')}`;
-      fb.innerHTML = `❗ <b>아쉬워요!</b> ${ansText} — 아래 설명으로 확실히 익혀봐요!`;
+      let ansText;
+      if(p.type==='single') ansText = '정답: '+(p.answer+1)+'번';
+      else if(p.type==='multi') ansText = '정답: '+p.answer.map(x=>x+1).join(', ')+'번';
+      else if(p.type==='input') ansText = '정답: '+p.answer;
+      else ansText = '정답: '+p.fields.map(f=>f.answer).join(' / ');
+      fb.innerHTML = '❗ <b>아쉬워요!</b> '+ansText+' — 아래 설명으로 확실히 익혀봐요!';
       fb.className = 'feedback show no';
     }
 
@@ -1379,9 +1098,7 @@ problems.forEach((p, idx) => {
   });
 
   card.querySelector('[data-action="reset"]').addEventListener('click', ()=>{
-    if(card.dataset.solved==="1"){
-      solved = Math.max(0, solved-1);
-    }
+    if(card.dataset.solved==="1"){ solved = Math.max(0, solved-1); }
     card.dataset.solved="0";
     card.querySelectorAll('.choice').forEach(c=>c.classList.remove('selected','correct-ans','wrong-ans'));
     card.querySelectorAll('input.fillin').forEach(i=>{i.value=''; i.style.borderBottomColor=''; i.style.color='';});
@@ -1398,3 +1115,4 @@ updateScore();
 
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
